@@ -3483,10 +3483,88 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ViewForum',
   data: function data() {
-    return {};
+    return {
+      id: this.$route.params.id,
+      user_react: false,
+      datas: {},
+      cmt_parent: [],
+      cmt_child: [],
+      allreact: 0
+    };
+  },
+  mounted: function mounted() {
+    this.loadViewForum();
+  },
+  methods: {
+    loadViewForum: function loadViewForum() {
+      var _this = this;
+
+      axios.get('http://localhost/codehero/api/forum/' + this.id + '/slug').then(function (rep) {
+        _this.datas = rep.data.datas;
+        _this.cmt_parent = rep.data.allcmt;
+        _this.cmt_child = rep.data.cmt_child;
+        _this.user_react = rep.data.user_react;
+        _this.allreact = rep.data.allreact;
+        console.log('test');
+        console.log(rep.data.datas);
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    }
   }
 });
 
@@ -43172,22 +43250,252 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container p-0" }, [
+    _c("input", {
+      attrs: { type: "hidden", id: "title_web", name: "" },
+      domProps: { value: _vm.datas.title_post }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c(
+          "div",
+          {
+            staticStyle: {
+              "background-position": "center",
+              "background-size": "cover",
+              height: "200px",
+              position: "relative"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticStyle: {
+                  position: "absolute",
+                  background: "rgba(255,255,255,.4)",
+                  width: "100%",
+                  padding: "2px 8px"
+                }
+              },
+              [
+                _c("b", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v(_vm._s(_vm.datas.name_cate))
+                  ])
+                ]),
+                _vm._v(" | "),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Hoạt động")])
+              ]
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c(
+          "ul",
+          {
+            staticClass: "list_redicrect",
+            staticStyle: { display: "flex", "flex-wrap": "wrap" }
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("li", [
+              _c("i", { staticClass: "fas fa-angle-right" }),
+              _c("a", { attrs: { href: "" } }, [
+                _vm._v(" " + _vm._s(_vm.datas.name_cate))
+              ]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-angle-right" })
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                { staticStyle: { color: "#333" }, attrs: { href: "#" } },
+                [_vm._v(" " + _vm._s(_vm.datas.title_post))]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("br")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-3 col-md-12 col-sm-12 info_post_mobile p-0" },
+        [
+          _c("div", {
+            staticClass: "forum_info_auth info_user_post",
+            staticStyle: {
+              "background-position": "center",
+              "background-size": "cover",
+              "border-radius": "50%"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "div_level_user" }, [
+            _c(
+              "form",
+              { staticClass: "form_user", attrs: { method: "POST" } },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "link_user",
+                    staticStyle: { "font-weight": "500" },
+                    attrs: { status: "false", username: _vm.datas.id, href: "" }
+                  },
+                  [
+                    _vm._v(_vm._s(_vm.datas.user) + "\n\t\t\t\t\t"),
+                    _c("div", { staticClass: "user_name" })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", [_vm._v("hi")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "getTime hide-on-table hidden-on-pc " }, [
+              _c("i", { staticClass: "far fa-clock" }),
+              _vm._v(" " + _vm._s(_vm.datas.created_at))
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-9 p-0" }, [
+        _c(
+          "div",
+          {
+            staticStyle: {
+              background: "#e2ecf0",
+              border: "5px solid #fff",
+              "box-shadow": "1px 2px 3px gray",
+              "border-radius": "16px",
+              padding: "4px 8px"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticStyle: {
+                  display: "flex",
+                  "justify-content": "flex-end",
+                  "font-size": "0.8rem"
+                }
+              },
+              [
+                _c("span", { staticClass: "getTime" }, [
+                  _vm._v(_vm._s(_vm.datas.created_at))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "getTime hide-on-mobile" }, [
+                  _vm._v(_vm._s(_vm.datas.created_at))
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "cmt_forum" }, [
+              _c("h3", { staticStyle: { "text-transform": "uppercase" } }, [
+                _vm._v(_vm._s(_vm.datas.title_post))
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", {
+                staticClass: "content_post",
+                domProps: { innerHTML: _vm._s(_vm.datas.content_post) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "form",
+                { attrs: { onsubmit: "return false", action: "post" } },
+                [
+                  _vm.user_react
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-sm btn_react",
+                          staticStyle: { "line-height": "1", width: "100px" },
+                          attrs: { "data-id": _vm.datas.id_post }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-heart",
+                            staticStyle: { color: "red" }
+                          }),
+                          _vm._v(" Đã thích")
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info btn-sm btn_react",
+                          staticStyle: { "line-height": "1", width: "100px" },
+                          attrs: { "data-id": _vm.datas.id_post }
+                        },
+                        [_vm._v("Thích")]
+                      ),
+                  _vm._v(" "),
+                  _c("span", { domProps: { innerHTML: _vm._s(_vm.allreact) } })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("h1", [_vm._v("Welcome to forum")])
-    ])
+    return _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("Forum")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "socials-share",
+        staticStyle: {
+          display: "flex",
+          "justify-content": "flex-end",
+          margin: "0"
+        }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "bg-facebook",
+            attrs: {
+              href: "https://www.facebook.com/sharer/sharer.php?u=",
+              target: "_blank"
+            }
+          },
+          [_c("i", { staticClass: "fab fa-facebook-f" }), _vm._v(" Share")]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true

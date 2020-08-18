@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use Carbon\Carbon;
+use App\Forum;
 class ForumController extends Controller
 {
     public function index()
@@ -36,4 +37,75 @@ class ForumController extends Controller
 		   	];
          return response()->json($arr);
     }
+    public function view($id,Request $req)
+     {
+      $id_auth= $req->session()->get('id');
+      $data = DB::table('forum')->select('forum.*','forum.created_at as time_created','forum_cate.name_cate','forum_cate.id_cate','img_cate','accounts.*')->join('accounts','forum.auth_post','=','accounts.id')->join('forum_cate','forum.id_cate_forum','=','forum_cate.id_cate')->where('forum.id_post',$id)->get()->first();
+      $user_react = DB::table('react')->join('accounts','react.id_auth','=','accounts.id')->where('accounts.id',$id_auth)->where('react.id_post',$id)->get();
+      if (count($user_react)) {
+        $user_react=true;
+      }else{
+        $user_react=false;
+      }
+      $allreact = DB::table('react')->join('accounts','react.id_auth','=','accounts.id')->where('react.id_post',$id)->get();
+      $list_react = '';
+      $myself='';
+      $count_react=count($allreact);
+      $i=1;
+      $check=false;
+      if ($count_react) {
+         foreach ($allreact as $key => $value) {
+            if ($value->id==$id_auth) {
+               $myself.='<span class="seft_react">Bạn, </span>';
+               $i++;
+               $check=true;
+               break;
+            }
+         }
+         
+         $id_auth = Session::get('id') or '';
+         foreach ($allreact as $key => $value) {
+            if ($count_react>=4) {
+               $i++;
+            }
+            if ($check && $value->id==$id_auth) {
+
+            }else{
+               $list_react.='<a class="link_user" status="false" username="'.$value->id.'" href="http://'.$_SERVER['SERVER_NAME'].'/'.dirname($_SERVER['PHP_SELF']).'/profile/'.$value->id.'">'.$value->displayname.',
+               <span class="display_name"></span>
+               <div class="user_name"> 
+               </div>
+               </a> ';
+            }
+            if ($i>3) {
+              break;
+            }
+         }
+         if ($count_react>=4) {
+            $list_react=$myself.$list_react.'và <a class="other_react" href="#">'.($count_react-3).'</a> người khác đã thích!';
+         }else{
+            $list_react=$myself.$list_react.'đã thích!';
+         }
+      }else{
+        $list_react="Hãy là người đầu tiên thích bài viết này!"; 
+      }
+      $allcmt = DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_forum',$id)->where('id_parent',0)->get();
+      $cmt_child = DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_forum',$id)->where('id_parent','!=',0)->get();
+      $forum_view = 'forum_'.$id;
+      $update= Forum::find($id);
+      if (!Session::has($forum_view)) {
+         $update->views=$update->views+1;
+         $update->save();
+         Session::put($forum_view,1);
+      }
+      
+      $arr = [ 
+         'datas' => $data,
+         'user_react'=> $user_react,
+         'cmt_child'=>$cmt_child,
+         'allcmt'=> $allcmt,
+         'allreact'=> $list_react
+      ];
+    return response()->json($arr);
+   }
 }
