@@ -90,7 +90,6 @@
 					
 				</div>
 				<div>
-					<!-- <span><i class="fas fa-signature"></i>{{$data->sign}}</span>	 -->
 					<br>
 					<form onsubmit="return false" action="post">
 					{{csrf_field()}}

@@ -16,12 +16,6 @@ class BlogHomeController extends Controller
 {
    public function index()
    {
-      // $data = DB::table('forum')->select('user', 'name_cate','img_cate','title_post','forum.created_at','avatar','color_cate','id_post','slug_forum','like_post','comments','views','id')->join('forum_cate','forum.id_cate_forum','=','forum_cate.id_cate')->join('accounts','forum.auth_post','=','accounts.id')->orderBy('forum.created_at','DESC')->paginate(10);
-      // $data = DB::table('forum')->selectRaw('user', 'name_cate','img_cate','title_post','forum.created_at','avatar','color_cate','forum.id_post','slug_forum','like_post','comments','views','accounts.id')->join('forum_cate','forum.id_cate_forum','=','forum_cate.id_cate')->join('accounts','forum.auth_post','=','accounts.id')
-      //       ->leftJoin('react', 'forum.id_post', '=', 'react.id_post')
-      //       ->leftJoin('cmt', 'forum.id_post', '=', 'cmt.id_forum')
-      //       ->orderBy('forum.created_at','DESC')->paginate(10);
-      // COUNT(react.id_post) as react,COUNT(cmt.id_cmt),
             $data = DB::table('forum')->selectRaw('COUNT(react.id_post) as react,COUNT(cmt.id_forum) as cmt,user, name_cate,img_cate,title_post,forum.created_at,avatar,color_cate,forum.id_post,slug_forum,like_post,comments,views,accounts.id')->Join('forum_cate','forum.id_cate_forum','=','forum_cate.id_cate')->Join('accounts','forum.auth_post','=','accounts.id')
             ->leftJoin('react', 'forum.id_post', '=', 'react.id_post')
             ->leftJoin('cmt', 'forum.id_post', '=', 'cmt.id_forum')

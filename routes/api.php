@@ -22,5 +22,7 @@ Route::get('course','Api\CourseController@index');
 Route::get('course/{id}/{slug}','Api\CourseController@view');
 Route::get('blog/{id}','Api\BlogController@view');
 Route::get('forum','Api\ForumController@index');
+Route::post('forum/add','Api\ForumController@add');
+Route::post('forum/reply','Api\ForumController@reply');
 Route::get('forum/{id}/{slug}','Api\ForumController@view');
 Route::get('document','Api\DocumentController@index');

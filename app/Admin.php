@@ -12,4 +12,8 @@ class Admin extends Model
     {
         return $this->hasMany('App\Forum');
     }
+    public function cmt()
+    {
+    	return $this->hasMany('App\Comment','id_auth');
+    }
 }

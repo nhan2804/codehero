@@ -603,6 +603,7 @@ a.link_popular_new{
 	width: 40px;
 	height: 40px;
 	margin-right: 4px;
+	border-radius: 50%;
 }
 .input_cmt{
 	background: #f9f9f9;

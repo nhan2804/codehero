@@ -506,7 +506,7 @@ $('body').on('click','#see_more', function(event) {
 			}else{
 			$('#row_curr').val($row_curr+5);
 			$('.list_blog').append(data);
-			$('#see_more').text
+			$('#see_more').text("Xem thêm");
 			}
 		}
 	})
@@ -524,16 +524,16 @@ $('body').on('click','#see_more', function(event) {
 // $(document).on("contextmenu",function(e){        
 //    e.preventDefault();
 // });
-$('.edit_cmt').on('click', function(event) {
+$('body').on('click','.edit_cmt', function(event) {
 	event.preventDefault();
-	$id = $(this).attr('data-id');
-	console.log('#cmt_forum_'+$id);
+	// $id = $(this).attr('data-id');
+	// console.log('#cmt_forum_'+$id);
 	$('.modal_popup_cmt').removeClass('hidden');
-	$content= $('#cmt_forum_'+$id).text();
-	$content= $content.trim();
-	console.log($content);
-	$('.modal_popup_cmt .text_edit input').val('');
-	$('.modal_popup_cmt .text_edit input').val($content);
+	// $content= $('#cmt_forum_'+$id).text();
+	// $content= $content.trim();
+	// console.log($content);
+	// $('.modal_popup_cmt .text_edit input').val('');
+	// $('.modal_popup_cmt .text_edit input').val($content);
 	
 });
 if (localStorage.getItem("index")==null) {

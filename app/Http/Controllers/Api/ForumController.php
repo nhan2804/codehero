@@ -8,6 +8,8 @@ use DB;
 use Session;
 use Carbon\Carbon;
 use App\Forum;
+use App\Admin;
+use App\Comment;
 class ForumController extends Controller
 {
     public function index()
@@ -39,7 +41,8 @@ class ForumController extends Controller
     }
     public function view($id,Request $req)
      {
-      $id_auth= $req->session()->get('id');
+      $id_auth= $req->session()->get('id') or null;
+      $user = Admin::find($id_auth) or null;
       $data = DB::table('forum')->select('forum.*','forum.created_at as time_created','forum_cate.name_cate','forum_cate.id_cate','img_cate','accounts.*')->join('accounts','forum.auth_post','=','accounts.id')->join('forum_cate','forum.id_cate_forum','=','forum_cate.id_cate')->where('forum.id_post',$id)->get()->first();
       $user_react = DB::table('react')->join('accounts','react.id_auth','=','accounts.id')->where('accounts.id',$id_auth)->where('react.id_post',$id)->get();
       if (count($user_react)) {
@@ -89,7 +92,7 @@ class ForumController extends Controller
       }else{
         $list_react="Hãy là người đầu tiên thích bài viết này!"; 
       }
-      $allcmt = DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_forum',$id)->where('id_parent',0)->get();
+      $allcmt = DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_forum',$id)->where('id_parent',0)->paginate(10);
       $cmt_child = DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_forum',$id)->where('id_parent','!=',0)->get();
       $forum_view = 'forum_'.$id;
       $update= Forum::find($id);
@@ -100,6 +103,7 @@ class ForumController extends Controller
       }
       
       $arr = [ 
+          'user' => $user,
          'datas' => $data,
          'user_react'=> $user_react,
          'cmt_child'=>$cmt_child,
@@ -107,5 +111,35 @@ class ForumController extends Controller
          'allreact'=> $list_react
       ];
     return response()->json($arr);
+   }
+   public function add(Request $req)
+   {
+        $id_auth= Session::get('id');
+         $data = new Comment;
+         $data->content_cmt=$req->content;
+         $data->id_blog=0;
+         $data->id_forum=$req->id_post;
+         $data->id_parent=0;
+         $data->id_auth=$id_auth;
+         $data->save();
+        $id_insert = DB::getPdo()->lastInsertId();
+        // $cmt_add = Comment::find($id_insert);
+        $cmt_add=DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_forum',$data->id_forum)->where('id_parent',0)->where('id_cmt',$id_insert)->first();
+         return response()->json($cmt_add);
+   }
+   public function reply(Request $req)
+   {
+          $id_auth= Session::get('id');
+         $data = new Comment;
+         $data->content_cmt=$req->content;
+         $data->id_blog=0;
+         $data->id_forum=$req->id_post;
+         $data->id_parent=$req->id_cmt;
+         $data->id_auth=$id_auth;
+         $data->save();
+        $id_insert = DB::getPdo()->lastInsertId();
+        // $cmt_add = Comment::find($id_insert);
+        $cmt_add=DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_cmt',$id_insert)->first();
+         return response()->json($cmt_add);
    }
 }
