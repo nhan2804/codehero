@@ -257,14 +257,15 @@ $('.input_item').on('blur', function(event) {
 	
 	if ($(this).val()=='') {
 		$(this).parent().removeClass('focus');
-		$(this).parent().parent().removeClass('focus');
+		$
+		(this).parent().parent().removeClass('focus');
 	}
 });
-$('.btn_react').on('click', function(event) {
+$('body').on('click','.btn_react', function(event) {
 	$id_post = $(this).attr('data-id');
 	$_token = $('input[name="_token"]').val();
 	$.ajax({
-		url: 'react',
+		url: 'blog/6/react',
 		type: 'POST',
 		data: {_token:$_token,
 		id_post:$id_post},

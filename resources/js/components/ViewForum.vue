@@ -77,9 +77,11 @@
 			</div>
 		</div>
 		<br>
-		<div>Sắp xếp theo :</div>
-		<button v-on:click="asc">Mới nhất</button>
-		<button v-on:click="desc">Cũ nhất</button>
+		<div style="display:flex;justify-content:flex-end">
+			<button class="btn btn-light mr-2" v-on:click="asc">Mới nhất</button>
+			<button class="btn btn-dark" v-on:click="desc">Cũ nhất</button>
+		</div>
+		<br>
 		<Comment v-for="(value,i) in reply"
 				v-bind:cmt="value" :key="i"
 				v-bind:reply="value.reply"
@@ -140,7 +142,6 @@ export default {
   			this.cmt_child.map((v1,i1)=> {
   				if(v.id_cmt==v1.id_parent){
   					v.reply.push(v1);
-  				}else{
   				}
   			})
   			return v;
@@ -194,6 +195,7 @@ export default {
 		  id_post: this.cmt.id_post
 		})
 		.then((rep)=>{
+		this.cmt.content='';
 		  this.cmt_parent.push(rep.data);
 		})
 		.catch((e)=> {

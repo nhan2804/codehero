@@ -1027,17 +1027,18 @@ position: relative;
 }
 .line_cmt{
 	position: absolute;
-	height: 100%;width: 1px;
-	background: #AFADAD;
+	height: 100%;
+	width: 2px;
+	background: #35B7FB;
 	left: 50px;
 }
 .line_cmt:before,.line_cmt:after{
 	content: '';
 	position: absolute;
-	width: 1px;
+	width: 2px;
 	height: 10%;
 	left: 0;
-	background: #AFADAD;
+	background: #35B7FB;
 }
 .line_cmt:before{
 	top: -14px;
@@ -1369,9 +1370,6 @@ p{
   	float: right;
   	margin-right: 5px;
 }
-.active:after {
-  content: "\2212";
-}
 @keyframes change {
   from {
   	opacity: 0;
@@ -1385,4 +1383,5 @@ p{
 	transition: all 0.8s ease-out; 
 	animation: change 0.8s; 
 }
+
 

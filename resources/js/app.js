@@ -4,6 +4,7 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import { routes }  from './index';
 Vue.use(VueRouter);
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.prototype.$scrollToTop = () => window.scrollTo(0,0);
 const router = new VueRouter({
     mode: 'hash',

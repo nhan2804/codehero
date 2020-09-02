@@ -22,27 +22,16 @@
 				<div class="col-lg-12"><div class="forum_load"></div></div>
 				<div class="col-lg-12"><div class="forum_load"></div></div>
 				</template>
-				<div v-for="value in covertTitle" class="col-lg-12">
-					<div class="item_forum" style="display: flex;padding: 10px 0;margin:10px 0;border-top-left-radius: 20px;border-bottom-right-radius: 20px">
-						<div :style="{backgroundImage:'url(./'+value.avatar+')'}" style=";background-position: center;background-size: cover;width: 80px;height: 80px;border-radius: 50%;margin-left: 8px"></div>
-						<div style="height: 80px;flex: 1;margin-left: 8px;position: relative;">
-							<div style="display: flex;font-size: .8rem;">
-								<span v-bind:style="{backgroundColor:value.color_cate}" style="display: block;padding: 0 4px;border-radius: 10px;color: white">{{value.name_cate}}</span>
-								<span style="margin-left: 8px">{{value.created_at}}</span>
-							</div>
-							<router-link tag="a" class="link_forum" style="display: block;font-size: 1.1rem;" :to="{ path: '/forum/' + value.id_post+'/'+value.slug_forum+'.xml'}">{{value.title_post}}</router-link>
-							<div style="align-items: flex-end;position: absolute;bottom: 0">
-								<span style="font-size: 0.8rem"><i  class="fas fa-heart icon_heart"></i>{{value.react}}</span>
-								<span><i style="font-size: 0.8rem" class="far fa-comment-dots"> {{value.cmt}}</i></span>
-								<span><i style="font-size: 0.8rem" class="far fa-eye"> {{value.views}}</i></span>
-								<i style="font-size: 0.8rem" class="fas fa-user"></i><a class="link_user" username="" status="false" href="#">{{value.user}}<div class="user_name"></div></a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<ItemForum
+				v-for="(v,i) in datas.data"
+				:key="i"
+				:value="v"
+										>
+					
+				</ItemForum>
 			</div>
 			<div>
-				<!-- {{$data->links()}} -->
+				<pagination :data="datas" @pagination-change-page="getResults"></pagination>
 			</div>
 		</div>
 		<div class="col-lg-4">
@@ -91,26 +80,35 @@
 </template>
 
 <script>
+import ItemForum from './ItemForum';
 export default {
   name: 'ForumComponent',
+  components:{
+  	ItemForum
+  }
+  ,
   data () {
     return {
+    	page:1,
     	elem:8,
     	turn:4,
     	width:1,
     	user:1,
-    	datas:[],
+    	datas:{},
     	cate_data:[],
     	new_data:[],
     	load:true
     }
   },
   mounted(){
+  	this.page= this.$route.query.page;
     	this.loadForum(); 
-    	this.process();	
+    	this.process();
+    	
+    	console.log(this.$route.query.page);
   },
   updated(){
-
+this.page= this.$route.query.page;
 		$('.item_forum').each(function(i, el) {
 	       if (i % 2 === 0) {
 
@@ -136,18 +134,34 @@ export default {
   },
   methods:{
     	loadForum:function() {
+    		this.getResults();
     		axios.get('http://localhost/codehero/api/forum')
     		.then((rep)=>{
-    			this.datas=rep.data.data.data;
     			this.cate_data=rep.data.cate_forum;
     			this.new_data=rep.data.data_new;
-
     			this.user=rep.data.user;
     		})
     		.catch((e)=>{
     			console.log(e);
     		})
     	},
+    	getResults(page) {
+	        if (typeof this.$route.query.page === 'undefined') {
+	            page = 1;
+	        }
+	        console.log(page);
+	        this.page=page;
+	        axios.get('http://localhost/codehero/api/forum?page='+this.page)
+    		.then((rep)=>{
+    			this.datas=rep.data.data;
+    			this.page=rep.data.data.current_page;
+    			history.pushState({}, '', 
+                `/codehero/#/forum?page=${this.page}`);
+    		})
+    		.catch((e)=>{
+    			console.log(e);
+    		})
+        },
     	process:function() {
 		    this.elem = document.getElementById("progress_bar");
 		    this.turn = setInterval(this.frame, 10);
