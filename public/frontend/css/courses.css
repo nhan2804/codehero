@@ -4,7 +4,6 @@
 }
 .head-course {
     padding: 8px;
-    background: #d4d5f5 url(../../Images/BWD/course-head.png) center right 3%/contain no-repeat;
     min-height: 210px;
     display: flex;
     flex-direction: column;
