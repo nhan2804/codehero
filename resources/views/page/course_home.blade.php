@@ -11,9 +11,8 @@
 	<div class="container-fluid bg_course">
 		<br>
 		<br>
-	        <div class="head-course hide-on-mobile" style="background:#d4d5f5 url({{asset('public/frontend/img/course-head.png')}})center right 3%/contain no-repeat;">
-	            <h1>Học tập cùng <span>chuyên gia</span>,</h1>
-	            <h2>tham gia khoá học lập trình để nâng cao kỹ năng bản thân!</h2>
+	        <div class="head-course hide-on-mobile">
+	            <img src="http://localhost/codehero/public/images/course_banner.jpg" style="width: 100%">
 	            <div id="search" class="block-top-head">
 	                <div class="input-group">
 	                    <form id="form-search" action="/learning?">
