@@ -158,6 +158,7 @@ class BlogHomeController extends Controller
    }
    public function insert_forum(Request $req)
    {
+      
    	$data = new Forum;
    	$title_post= $req->title_forum;
    	$slug_forum= $req->slug_forum;
@@ -172,6 +173,7 @@ class BlogHomeController extends Controller
       $data->like_post= 0;
       $data->views= 0;
       $data->comments= 0;
+
       $data->id_cate_forum= $cate_forum;
    	try {
    		$data->save();
