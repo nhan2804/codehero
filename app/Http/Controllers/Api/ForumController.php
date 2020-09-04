@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Forum;
 use App\Admin;
 use App\Comment;
+use App\CateForum;
 class ForumController extends Controller
 {
     public function index()
@@ -140,5 +141,16 @@ class ForumController extends Controller
         // $cmt_add = Comment::find($id_insert);
         $cmt_add=DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_cmt',$id_insert)->first();
          return response()->json($cmt_add);
+   }
+   public function cate()
+   {
+    $id_auth= Session::get('id');
+    $user = Admin::find($id_auth) or null;
+     $cate_forum= CateForum::all();
+     $arr=[
+      'user' =>$user,
+      'cate_forum' =>$cate_forum
+     ];
+      return response()->json($arr);
    }
 }

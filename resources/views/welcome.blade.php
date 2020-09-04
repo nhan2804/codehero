@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>@yield('title')</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -27,6 +28,7 @@
     
 </head>
 <body>
+    <div id="app">
     <a href="javascript:void(0)"><div class="page"><i class="fas fa-angle-up"></i></div></a>
 <div class="modal_popup_nav hidden">
     <div class="layer"></div>
@@ -169,8 +171,8 @@
                                     @if(Session::get('lv')==0)
                                     <li class="dropdown_item"><a href="{{URL::to("admin/dashboard")}}">Vào trang admin</a></li>
                                     @endif
-                                    <li class="dropdown_item"><a href="{{URL::to("me")}}">Thông tin</a></li>
-                                    <li class="dropdown_item"><a href="{{URL::to("me/course")}}">Khóa học của tôi</a></li>
+                                    <li class="dropdown_item"><router-link tag="a" :to="{ path: '/me'}">Thông tin</router-link></li>
+                                    <li class="dropdown_item"><router-link tag="a" :to="{ path: '/me/course'}">Khóa học của tôi</router-link></li>
                                     <li style="border-bottom: 1px solid #ccc" class="dropdown_item"><a href="{{URL::to("me/post")}}">Bài viết</a></li>
                                     <li class="dropdown_item"><a href="{{URL::to("me/logout")}}">Đăng xuất</a></li>
                             </div>
@@ -181,10 +183,10 @@
                 </div>
         </nav>
         {{-- @yield('content') --}}
-        <div id="app">
+        
             <router-view >
             </router-view>
-        </div>
+       
         <footer>
             <div class="container mobile-container">
                 <div class="row">
@@ -269,6 +271,7 @@
             </div>
         </footer>
     </div>
+     </div>
 </body>
 <script src="{{asset('public/js/app.js')}}"></script>
 <script src="{{asset('public/frontend/js/js.js')}}"></script>

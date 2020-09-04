@@ -4,7 +4,8 @@
 	<br>
 	<br>
 	<div v-if="user!=null" style="display: flex;justify-content: center;">
-		<a href="blog/create-forum" style="border: 2px solid #007bff" class="btn "><i class="fas fa-plus"></i> Thảo luận</a>
+		<a href="blog/create-forum"  class="btn "></a>
+		<router-link tag="a" class="btn" style="border: 2px solid #007bff" :to="{ path: '/forum/create/'}"><i class="fas fa-plus"></i> Thảo luận</router-link>
 	</div>
 	<br>
 	<br>

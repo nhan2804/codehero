@@ -18,11 +18,16 @@ Route::middleware('auth:api')->get('/user',
 function (Request $request) {
 		return $request->user();
 	});
+
+// me
+Route::get('me/course', 'Api\ProfileController@course');
+
 Route::get('blog', 'Api\BlogController@index');
 Route::get('course', 'Api\CourseController@index');
 Route::get('course/{id}/{slug}', 'Api\CourseController@view');
 Route::get('blog/{id}', 'Api\BlogController@view');
 Route::get('forum', 'Api\ForumController@index');
+Route::get('forum/category', 'Api\ForumController@cate');
 Route::post('forum/add', 'Api\ForumController@add');
 Route::post('forum/reply', 'Api\ForumController@reply');
 Route::get('forum/{id}/{slug}', 'Api\ForumController@view');

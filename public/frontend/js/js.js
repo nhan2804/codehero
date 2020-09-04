@@ -84,7 +84,7 @@ $('#cmt_blog').on('click', function(event) {
 		})
 	}
 });
-$('.list_lesson li a').click(function() {
+$('body').on('click','.list_lesson li a',function() {
 	var a = $(this).attr('data-title');
 	$('#title_course').text(a);
 	var b = $(this).attr('data-href');
