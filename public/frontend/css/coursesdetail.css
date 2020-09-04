@@ -21,6 +21,12 @@ body{
     margin-top: -61px;
     height: 396px;
 }
+.course-head .col-sm-4{
+    height: 380.4px;
+}
+.course-head .col-sm-4 .info-course{
+    height: 430.4px;
+}
 .info-course {
     border-radius: 3px;
     background-color: #fff;
@@ -114,6 +120,8 @@ body{
     font-size: 14px;
     line-height: 16px;
     margin-top: 10px;
+    height: 100%;
+    position: relative;
 }
 .user-enrolled {
     display: inline;
@@ -263,7 +271,7 @@ a:hover{
     transition: background 2s;
 }
 #exTab1 .nav-pills>li.active>a, #exTab1 .nav-pills>li:hover>a {
-    background: url(../../../../img/bg-white.svg);
+    background: url(http://localhost/codehero/public/images/bg-white.svg);
     color: #4d96ff;
     border: none;
 }
