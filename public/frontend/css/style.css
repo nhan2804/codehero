@@ -1123,7 +1123,7 @@ p{
 	box-shadow: 1px 2px 3px #C6BFBF;
 	width: 180px;
 	position: absolute;
-	top: 62px;
+	top: 60px;
 }
 .div_item li{
 	list-style-type: none;
@@ -1383,5 +1383,10 @@ p{
 	transition: all 0.8s ease-out; 
 	animation: change 0.8s; 
 }
-
+.image_key_section{
+	width: 58%;
+}
+.list-key-features li{
+	margin-bottom: 186px;
+}
 
