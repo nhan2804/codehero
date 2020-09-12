@@ -3,7 +3,7 @@
 		<br>
 		<br>
 	        <div class="head-course hide-on-mobile">
-	            <img src="http://localhost/codehero/public/images/course_banner.jpg" style="width: 100%">
+	            <img src="http://localhost/codehero/public/images/banner1.png" style="width: 100%">
 	            <div id="search" class="block-top-head">
 	                <div class="input-group">
 	                    <form id="form-search" action="/learning?">
