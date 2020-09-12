@@ -190,7 +190,7 @@
         <footer>
             <div class="container mobile-container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <ul class="adress">
                             <span>ĐỊA CHỈ</span>    
                                 <li>
@@ -204,7 +204,7 @@
                                 </li>
                         </ul>
                     </div>               
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <ul class="contact">
                             <span>THÔNG TIN</span>    
                             <li>
@@ -224,7 +224,7 @@
                             </li>
                         </ul>
                     </div>                
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <div class="search-text"> 
                             <div class="container mobile-container">
                                 <div class="row text-center">                             
@@ -239,7 +239,7 @@
                             </div>     
                         </div>
                     </div>           
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <ul class="social">
                             <span>MẠNG XÃ HỘI</span>    
                                <li>
