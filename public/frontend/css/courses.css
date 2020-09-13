@@ -49,7 +49,8 @@ h1 {
     padding-top: 30px;
     position: absolute;
     width: 100%;
-    left: 4%;
+    left: 3%;
+    top: 50%;
 }
 .head-course #search .input-group {
     font-size: 0;

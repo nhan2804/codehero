@@ -59,7 +59,7 @@
                                                     <div class="user-rating">
                                                         <div class="user-action-buttons">
                                                             <span class="likeButton">
-                                                                <img src=""  alt="err"class="up" id="img_1847944">
+                                                                <img src="http://localhost/codehero/public/images/like.svg"  alt="err"class="up" id="img_1847944">
                                                                 <span id="countVoteLike_1847945" class="count-vote"> 1</span>
                                                             </span>
                                                             <span class="footer-button reply-button">

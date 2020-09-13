@@ -262,6 +262,13 @@ background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8211659
 	.div_notify {
 		left: -200px;
 	}
+	.responsive-col{
+		top: 40px !important;
+		left: 40px !important;;
+	}
+	.page{
+		left: 85% !important;
+	}
 }
 @media (max-width: 360px){
 	.footer-section1 img{
