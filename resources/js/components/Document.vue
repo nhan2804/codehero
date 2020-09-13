@@ -13,10 +13,71 @@
      	</div>
       </div>
   </div>
+  
+  
+  <div v-if="load">
+  <content-loader>
+    <rect x="0" y="0" width="100%" height="60" />
+  </content-loader>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-12">
+        <div class="cate_document">
+          <content-loader>
+            <rect width="1000" height="80" />
+          </content-loader>
+          <ul class="list_document">
+            <content-loader>
+              <rect width="100%" height="60" />
+            </content-loader>
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="60" />
+            </content-loader>
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="60" />
+            </content-loader>
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="60" />
+            </content-loader>
+          </ul>
+        </div>
+        <br>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
+        <div class="row">
+          <div class="col-lg-4">
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="400" />
+            </content-loader>
+          </div>
+          <div class="col-lg-4">
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="400" />
+            </content-loader>
+          </div>
+          <div class="col-lg-4">
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="400" />
+            </content-loader>
+          </div>
+          <div class="col-lg-4">
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="400" />
+            </content-loader>
+          </div>
+          <div class="col-lg-4">
+            <content-loader>
+              <rect x="0" y="0" width="100%" height="400" />
+            </content-loader>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+  </div>
   <div class="hide-on-table-and-moblie">
     <img src="public/images/doc.png" alt="" style="width: 100%">
   </div>
-  <br>
   <div class="container">
   	<div class="row">
     	<div class="col-lg-3 col-md-4 col-sm-12">
@@ -46,6 +107,7 @@
 </div>
 </template>
 <script>
+import { ContentLoader } from 'vue-content-loader';
 export default {
 
   name: 'Document',
@@ -58,6 +120,9 @@ export default {
       load:true
     }
   },
+  components: {
+    ContentLoader
+  },
   updated(){
   	$('body .item_document:eq('+index+')').click();
     this.load=false;
@@ -65,7 +130,9 @@ export default {
   mounted(){
     	this.loadCateDoc();
       this.process();
+       this.load=false;
   },
+
   methods:{
     	loadCateDoc:function() {
     		axios.get('http://localhost/codehero/api/document')

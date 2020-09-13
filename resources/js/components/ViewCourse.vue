@@ -12,16 +12,23 @@
     		</ul>
     	</div>
     </div>
+<<<<<<< HEAD
+
+=======
     <br>
     <br>
     <br>
     <br>
+>>>>>>> 13f6ab3fae6707483d636cbacc212c0fda1ce144
     <div id="layout-main" class="group">
             <div id="layout-content" class="group">
                 <div id="content" class="group">
                     <div class="zone zone-content">
                         <div class="course-head">
                             <div class="container">
+                                <br>
+                                <br>
+                                <br>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="info-course">
@@ -129,7 +136,7 @@
     										</div>
     									</div>
     									<h3>Đánh giá khóa học này?</h3>
-    									<div style="cursor: pointer;">
+    									<div class="div_star" style="cursor: pointer;">
     										<i class="fa fa-star icon-star" data-index="0" title="Tệ"></i>
     										<i class="fa fa-star icon-star" data-index="1" title="Bình thường"></i>
     										<i class="fa fa-star icon-star" data-index="2" title="Khá"></i>

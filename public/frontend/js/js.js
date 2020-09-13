@@ -130,23 +130,23 @@ $('body').on('click','#btn_buy', function(event) {
 	}
 });
 function resetColor() {
-	$('.icon-star').css('color', '#C0C0C0');
+	$('.div_star .icon-star').css('color', '#C0C0C0');
 }
 let rateIndex=-1;
 if (localStorage.getItem("rateIndex")!=null) {
 	setStar(localStorage.getItem("rateIndex"));
 }
-$('.icon-star').on('click', function(event) {
+$('.div_star .icon-star').on('click', function(event) {
 	rateIndex =$(this).attr('data-index');
 	localStorage.setItem("rateIndex", rateIndex);
 	$('.cmt_rate').removeClass('hidden');
 });
-$('.icon-star').mouseover(function(event) {
+$('body .div_star .icon-star').mouseover(function(event) {
 	resetColor();
 	$index = $(this).attr('data-index');
 	setStar($index);
 });
-$('.icon-star').mouseleave(function(event) {
+$('.div_star .icon-star').mouseleave(function(event) {
 	resetColor();
 	if (rateIndex!=-1) {
 		setStar(rateIndex);
@@ -154,7 +154,7 @@ $('.icon-star').mouseleave(function(event) {
 });
 function setStar(index) {
 	for (var i = 0; i <=index; i++) {
-		$('.icon-star:eq('+i+')').css('color', 'yellow');
+		$('.div_star .icon-star:eq('+i+')').css('color', 'yellow');
 	}
 }
 $('body').on('click','#btn_rate', function(event) {
