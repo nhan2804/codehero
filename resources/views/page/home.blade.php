@@ -208,9 +208,21 @@
             <div class="container key_section landing-section mobile-container">
                 <h2 class="title_section">Lập trình<br> là xu thế của tương lai</h2><br><br>
                 <div class="row">
-                    <div data-aos="fade-right" class="col-lg-6">
-                        <img src={{asset('public/frontend/img/chia-khoa-lap-trinh.png')}}/></div>
-                    <div class="col-lg-6" style="position: relative; top: 25px; left: 50px;">
+                    <div data-aos="fade-right" class="col-lg-6" style="right: 40px">
+                        <img src={{asset('public/images/')}}/>
+                        <div style="display: flex">
+                            <img src={{asset('public/images/home1.png')}} class="image_key_section"/>
+                            <img src={{asset('public/images/home2.png')}} class="image_key_section"/>
+                        </div>
+                        <div style="text-align: center">
+                            <img src={{asset('public/images/home3.png')}} class="image_key_section"/>
+                        </div>
+                        <div style="display: flex">
+                            <img src={{asset('public/images/home4.png')}} class="image_key_section"/>
+                            <img src={{asset('public/images/home5.png')}} class="image_key_section"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 responsive-col" style="position: relative; top: 135px; left: 100px;">
                         <ul class="list-key-features">
                             <li>
                                 <div class="title_group" >
