@@ -269,6 +269,9 @@ background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8211659
 	.page{
 		left: 85% !important;
 	}
+	.responsive_img{
+		right: 51px!important;
+	}
 }
 @media (max-width: 360px){
 	.footer-section1 img{

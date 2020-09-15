@@ -701,6 +701,8 @@ a.link_popular_new{
 }
 #cmt_blog{
 	outline: none;
+	margin-top: 10px;
+	margin-right: -12px;
 }
 #cmt_input:focus{
 	border-bottom: 2px solid black;
@@ -1385,6 +1387,7 @@ p{
 }
 .image_key_section{
 	width: 58%;
+	margin-right: 40px;
 }
 .list-key-features li{
 	margin-bottom: 186px;
