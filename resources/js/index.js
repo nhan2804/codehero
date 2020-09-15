@@ -10,9 +10,11 @@ import CreateForum from './components/CreateForum'
 import ViewCourse from './components/ViewCourse'
 import MeCourse from './components/MeCourse'
 import MeBlog from './components/MeBlog'
+import CateCourse from './components/CateCourse'
 
 export const routes = [
 	{ path: '/', name: 'HomeComponent', component: HomeComponent },
+	{ path: '/course/category/:id', name: 'CateCourse', component: CateCourse },
 	{ path: '/blog', name: 'BlogComponent', component: BlogComponent },
 	{ path: '/forum/create', name: 'CreateForum', component: CreateForum },
 	{ path: '/forum', name: 'ForumComponent', component: ForumComponent },
@@ -21,6 +23,7 @@ export const routes = [
 	{ path: '/document', name: 'Document', component: Document },
 	{ path: '/me/blog', name: 'MeBlog', component: MeBlog },
 	{ path: '/me/course/', name: 'MeCourse', component: MeCourse },
+
 	{ path: '/course', name: 'CourseComponent', component: CourseComponent },
 	
 	{ path: '/course/:id/:slug', name: 'ViewCourse', component: ViewCourse }

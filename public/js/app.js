@@ -2159,6 +2159,104 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CateCourse.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CateCourse.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CateCourse',
+  data: function data() {
+    return {
+      datas: [],
+      id: this.$route.params.id,
+      cate: {}
+    };
+  },
+  computed: {
+    convertCourse: function convertCourse() {
+      return this.datas.map(function (el, index) {
+        if (el.desc_course.length > 80) {
+          el.desc_course = el.desc_course.slice(0, 80) + '...</p>';
+          el.slug = "ok-ok";
+          return el;
+        } else {
+          el.slug = "ok-ok";
+          return el;
+        }
+      });
+    }
+  },
+  created: function created() {
+    this.loadCateCourse();
+  },
+  methods: {
+    loadCateCourse: function loadCateCourse() {
+      var _this = this;
+
+      axios.get('api/course/category/' + this.id).then(function (rep) {
+        _this.datas = rep.data.datas;
+        _this.cate = rep.data.cate;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CommentComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CommentComponent.vue?vue&type=script&lang=js& ***!
@@ -42239,6 +42337,178 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CateCourse.vue?vue&type=template&id=ebe27016&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CateCourse.vue?vue&type=template&id=ebe27016&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid bg_course" }, [
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "container mobile-container p-0" }, [
+      _c("div", { attrs: { id: "list" } }, [
+        _c("section", { staticClass: "list-courses" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _c("h3", { staticClass: "col-12" }, [
+                _vm._v(_vm._s(_vm.cate.name))
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.convertCourse, function(value) {
+                return _c(
+                  "article",
+                  { staticClass: "course-item col-xs-6 col-md-4 col-lg-3" },
+                  [
+                    _c("div", { staticClass: "border_course" }, [
+                      _c("div", { staticClass: "wrap-course-item" }, [
+                        _c(
+                          "div",
+                          { staticClass: "course-thumb" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: {
+                                  tag: "a",
+                                  to: {
+                                    path:
+                                      "/course/" +
+                                      value.id_course +
+                                      "/" +
+                                      value.slug
+                                  }
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  staticStyle: {
+                                    width: "100%",
+                                    height: "170px"
+                                  },
+                                  attrs: {
+                                    src: "public" + value.img_course,
+                                    alt: value.title_course
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(0, true)
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "view-content" }, [
+                          _c(
+                            "h3",
+                            { staticClass: "course-title" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    tag: "a",
+                                    to: {
+                                      path:
+                                        "/course/" +
+                                        value.id_course +
+                                        "/" +
+                                        value.slug
+                                    }
+                                  }
+                                },
+                                [_vm._v(_vm._s(value.title_course))]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", {
+                            staticClass: "wrap_desc",
+                            domProps: { innerHTML: _vm._s(value.desc_course) }
+                          }),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm._m(1, true)
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(2, true)
+                      ])
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "timeCouter" }, [
+      _c("span", { staticClass: "time" }, [_vm._v("18:00:00")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "user-rating" }, [
+      _c("div", { staticClass: "course-info" }, [
+        _c("span", { staticClass: "lession-count" }, [
+          _c("i", { staticClass: "fa fa-desktop" }),
+          _vm._v("55")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "student-count" }, [
+          _c("i", { staticClass: "fas fa-user-alt" }),
+          _vm._v("2271")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "star-rating" }, [
+        _c("span", { staticStyle: { width: "90.0%" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "badge" }, [
+      _c("span", { staticClass: "name_badge" }, [_vm._v("Khóa mới")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CommentComponent.vue?vue&type=template&id=d6b6866e&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CommentComponent.vue?vue&type=template&id=d6b6866e&scoped=true& ***!
@@ -62139,6 +62409,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/CateCourse.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/CateCourse.vue ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CateCourse_vue_vue_type_template_id_ebe27016_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CateCourse.vue?vue&type=template&id=ebe27016&scoped=true& */ "./resources/js/components/CateCourse.vue?vue&type=template&id=ebe27016&scoped=true&");
+/* harmony import */ var _CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CateCourse.vue?vue&type=script&lang=js& */ "./resources/js/components/CateCourse.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CateCourse_vue_vue_type_template_id_ebe27016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CateCourse_vue_vue_type_template_id_ebe27016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "ebe27016",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CateCourse.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CateCourse.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/CateCourse.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CateCourse.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CateCourse.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CateCourse.vue?vue&type=template&id=ebe27016&scoped=true&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/CateCourse.vue?vue&type=template&id=ebe27016&scoped=true& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CateCourse_vue_vue_type_template_id_ebe27016_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CateCourse.vue?vue&type=template&id=ebe27016&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CateCourse.vue?vue&type=template&id=ebe27016&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CateCourse_vue_vue_type_template_id_ebe27016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CateCourse_vue_vue_type_template_id_ebe27016_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/CommentComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/CommentComponent.vue ***!
@@ -63093,7 +63433,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ViewCourse__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ViewCourse */ "./resources/js/components/ViewCourse.vue");
 /* harmony import */ var _components_MeCourse__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/MeCourse */ "./resources/js/components/MeCourse.vue");
 /* harmony import */ var _components_MeBlog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/MeBlog */ "./resources/js/components/MeBlog.vue");
+/* harmony import */ var _components_CateCourse__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/CateCourse */ "./resources/js/components/CateCourse.vue");
  // import HeaderComponent from './components/HeaderComponent'
+
 
 
 
@@ -63109,6 +63451,10 @@ var routes = [{
   path: '/',
   name: 'HomeComponent',
   component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, {
+  path: '/course/category/:id',
+  name: 'CateCourse',
+  component: _components_CateCourse__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   path: '/blog',
   name: 'BlogComponent',

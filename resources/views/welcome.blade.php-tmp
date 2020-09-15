@@ -126,7 +126,10 @@
                             <li class="header_item"><a class="header_link" href="{{URL::to('#/course')}}">Chương trình đào tạo</a>
                                 <ul class="course_cate" style="position: absolute;">
                                     @foreach($cate_course as $k =>$v)
-                                    <li><a href="{{URL::to('course/category/'.$v->id_cate)}}">{{$v->name}}</a></li>
+                                    {{-- <li><a href="{{URL::to('course/category/'.$v->id_cate)}}">{{$v->name}}</a></li> --}}
+                                    <li>
+                                    <router-link tag="a" :to="{ path: '/course/category/{{$v->id_cate}}'}">{{$v->name}}</router-link>
+                                    </li>
                                     @endforeach
                                 </ul>
                             </li>

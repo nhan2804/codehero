@@ -7,12 +7,23 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Course;
+use App\CateCourse;
 class CourseController extends Controller
 {
    public function index()
    {
    	$data = DB::table('course_cate')->join('course','course_cate.id_cate','=','course.cate_parent')->orderByDesc('course_cate.id_cate')->get();
    	return response()->json($data);
+   }
+   public function category($id)
+   {
+     $data = DB::table('course_cate')->join('course','course_cate.id_cate','=','course.cate_parent')->where('id_cate',$id)->get();
+     $cate = CateCourse::where('id_cate',$id)->first();
+     $arr = [
+      'datas'=>$data,
+      'cate'=>$cate
+     ];
+     return response()->json($arr);
    }
    public function view($id)
    {

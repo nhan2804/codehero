@@ -162,10 +162,6 @@ $('body').on('click','#btn_rate', function(event) {
 	$id_course= $(this).attr('data-id');
 	$_token = $('input[name="_token"]').val();
 	$rate= $('#rate_input').val();
-	console.log("id :"+$id_course);
-	console.log("_token :"+$_token);
-	console.log("rate :"+$rate);
-	console.log("rate :"+$star_rate);
 	if ($rate) {
 		$.ajax({
 			url: 'course/rate-course',
