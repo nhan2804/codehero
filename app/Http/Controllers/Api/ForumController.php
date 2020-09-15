@@ -11,6 +11,7 @@ use App\Forum;
 use App\Admin;
 use App\Comment;
 use App\CateForum;
+use App\Notification;
 class ForumController extends Controller
 {
     public function index()
@@ -124,6 +125,18 @@ class ForumController extends Controller
          $data->save();
         $id_insert = DB::getPdo()->lastInsertId();
         // $cmt_add = Comment::find($id_insert);
+        $notify = new Notification;
+         $notify->content_notify='đã bình luận về bài viết của bạn';
+         // if($id_auth=!$req->get('id_auth_rec')) {
+         $notify->id_send=$id_auth;
+         $notify->id_rec=$req->id_user;
+         $notify->id_forum=$req->id_post;
+         $notify->id_blog=0;
+         $notify->id_cmt=0;
+         $notify->type_notify=1;
+         $notify->status_notify=0;
+         $notify->link_notify=$req->link.'#comment_'.$id_insert;
+         $notify->save();
         $cmt_add=DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_forum',$data->id_forum)->where('id_parent',0)->where('id_cmt',$id_insert)->first();
          return response()->json($cmt_add);
    }
@@ -138,6 +151,20 @@ class ForumController extends Controller
          $data->id_auth=$id_auth;
          $data->save();
         $id_insert = DB::getPdo()->lastInsertId();
+         $notify = new Notification;
+         // echo $id_link_comment;
+
+         $notify->content_notify='đã trả lời bình luận của bạn trong <span class="name_user_notify">'.$req->title.'</span>';
+         $notify->id_send=$id_auth;
+         $notify->id_rec=$req->id_user;
+         $notify->id_forum=$req->id_post;
+         $notify->id_blog=0;
+         $notify->id_cmt=$req->id_cmt;
+         $notify->type_notify=0;
+         $notify->status_notify=0;
+         $notify->link_notify=$req->link.'#comment_'.$id_insert;
+
+         $notify->save();
         // $cmt_add = Comment::find($id_insert);
         $cmt_add=DB::table('accounts')->join('cmt','accounts.id','=','cmt.id_auth')->where('id_cmt',$id_insert)->first();
          return response()->json($cmt_add);
@@ -152,5 +179,10 @@ class ForumController extends Controller
       'cate_forum' =>$cate_forum
      ];
       return response()->json($arr);
+   }
+   public function delete(Request $r)
+   {
+     $res=Comment::where('id_cmt',$r->id)->delete();
+     $res=Comment::where('id_parent',$r->id)->delete();
    }
 }

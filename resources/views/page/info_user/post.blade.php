@@ -81,11 +81,12 @@
         </ul>
      </div>
  @endif
+
+</div>
+</div>
 <script>
     config = {};
     config.entities_latin = false;
     config.language = "vi";
     CKEDITOR.replace("edit_post", config);
 </script>
-</div>
-</div>

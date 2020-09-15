@@ -102,14 +102,17 @@ export default {
     }
   },
   mounted(){
-  	this.page= this.$route.query.page;
+  	
+  		this.page= this.$route.query.page;
     	this.loadForum(); 
     	this.process();
-    	
-    	console.log(this.$route.query.page);
+  },
+  created(){
+
   },
   updated(){
-this.page= this.$route.query.page;
+  		document.title = "Diễn đàn thảo luận";
+		this.page= this.$route.query.page;
 		$('.item_forum').each(function(i, el) {
 	       if (i % 2 === 0) {
 
@@ -136,7 +139,7 @@ this.page= this.$route.query.page;
   methods:{
     	loadForum:function() {
     		this.getResults();
-    		axios.get('http://localhost/codehero/api/forum')
+    		axios.get('api/forum')
     		.then((rep)=>{
     			this.cate_data=rep.data.cate_forum;
     			this.new_data=rep.data.data_new;
@@ -146,13 +149,13 @@ this.page= this.$route.query.page;
     			console.log(e);
     		})
     	},
-    	getResults(page) {
+    	getResults:function(page) {
 	        if (typeof this.$route.query.page === 'undefined') {
 	            page = 1;
 	        }
 	        console.log(page);
 	        this.page=page;
-	        axios.get('http://localhost/codehero/api/forum?page='+this.page)
+	        axios.get('api/forum?page='+this.page)
     		.then((rep)=>{
     			this.datas=rep.data.data;
     			this.page=rep.data.data.current_page;

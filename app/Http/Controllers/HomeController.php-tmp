@@ -34,7 +34,9 @@ class HomeController extends Controller {
 			$data->star_rate = $req->get("star_rate")+1;
 			$data->comment   = $req->get("rate");
 			$data->save();
+
 		}
+		echo "string";
 	}
 	public function rate_detail(Request $req) {
 		$html = '';

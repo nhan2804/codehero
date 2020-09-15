@@ -21,12 +21,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // me
 Route::get('me/course','Api\ProfileController@course');
+Route::get('me/blog','Api\ProfileController@blog');
 
 Route::get('blog','Api\BlogController@index');
 Route::get('course','Api\CourseController@index');
 Route::get('course/{id}/{slug}','Api\CourseController@view');
 Route::get('blog/{id}','Api\BlogController@view');
 Route::get('forum','Api\ForumController@index');
+Route::post('forum/del-cmt','Api\ForumController@delete');
 Route::get('forum/category','Api\ForumController@cate');
 Route::post('forum/add','Api\ForumController@add');
 Route::post('forum/reply','Api\ForumController@reply');

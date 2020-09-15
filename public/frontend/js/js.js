@@ -130,23 +130,23 @@ $('body').on('click','#btn_buy', function(event) {
 	}
 });
 function resetColor() {
-	$('.div_star .icon-star').css('color', '#C0C0C0');
+	$('body .div_star .icon-star').css('color', '#C0C0C0');
 }
 let rateIndex=-1;
 if (localStorage.getItem("rateIndex")!=null) {
 	setStar(localStorage.getItem("rateIndex"));
 }
-$('.div_star .icon-star').on('click', function(event) {
+$('body ').on('click','.icon-star', function(event) {
 	rateIndex =$(this).attr('data-index');
 	localStorage.setItem("rateIndex", rateIndex);
 	$('.cmt_rate').removeClass('hidden');
 });
-$('body .div_star .icon-star').mouseover(function(event) {
+$('body ').on('mouseover', '.icon-star',function(event) {
 	resetColor();
 	$index = $(this).attr('data-index');
 	setStar($index);
 });
-$('.div_star .icon-star').mouseleave(function(event) {
+$('body').on('mouseover', '.icon-star',function(event) {
 	resetColor();
 	if (rateIndex!=-1) {
 		setStar(rateIndex);
@@ -168,16 +168,16 @@ $('body').on('click','#btn_rate', function(event) {
 	console.log("rate :"+$star_rate);
 	if ($rate) {
 		$.ajax({
-			url: 'rate-course',
+			url: 'course/rate-course',
 			type: 'POST',
 			data: {
-				id_course:$id_course,
+				id_course:14,
 				_token:$_token,
 				rate:$rate,
 				star_rate:$star_rate
 			},
 			success:function (data) {
-				alert("ok");
+				alert(data);
 			}
 		})
 	}
@@ -578,7 +578,7 @@ $('.btn_nav').on('click', function(event) {
 	// event.preventDefault();
 	$('.modal_popup_nav').toggleClass('hidden');
 });
-$('.container').on('click', function(event) {
+$('body').on('click','.container', function(event) {
 	// event.preventDefault();
 	$('.div_notify').hide();
 });
@@ -588,10 +588,10 @@ $('.btn_change').on('click', function(event) {
 	$(this).toggleClass('active');
 	$('.form_change').toggleClass('hidden');
 });
-AOS.init({
-    easing: 'ease-out-back',
-    duration: 2000,
-    delay: 0,
-    once: true,
-    disable: 'mobile'
- });
+// AOS.init({
+//     easing: 'ease-out-back',
+//     duration: 2000,
+//     delay: 0,
+//     once: true,
+//     disable: 'mobile'
+//  });

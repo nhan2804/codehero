@@ -53,7 +53,7 @@ export default {
   },
   methods:{
   	loadCate:function() {
-		axios.get('http://localhost/codehero/api/forum/category')
+		axios.get('api/forum/category')
 		.then((resp)=>{
 			this.cate=resp.data.cate_forum;
 			this.user=resp.data.user;

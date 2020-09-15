@@ -15,7 +15,7 @@
                                         <div class="row author">
                                             <div class="col-sm-7 text-left">
 												<span>Tác giả</span>
-												<img class="img_auth" src="loi">
+												<img class="img_auth" alt="?" :src="'./'+datas.avatar">
                                                 <span class="author-name"><a href="#">{{datas.displayname}}</a></span>
                                                 <span class="time-icon"><i class="fa fa-circle"></i></span>
                                                 <span id="create-time" class="time">{{datas.created_at}}</span>
@@ -30,7 +30,7 @@
                                         <div class="row main-content">
                                             <div class="col-md-12">
                                                 <div class="main-image">
-                                                    <img  src="" alt="loi">
+                                                    <img  :src="'./public'+datas.img_blog" alt="loi">
                                                 </div>
                                                 <div class="blog-content">
                                                     <h1>{{datas.title_blog}}</h1>
@@ -157,10 +157,10 @@
                                                 <h3>Tác giả</h3>
                                                 <div class="author">
                                                     <div class="avatar">
-                                                        <img id="owner-user-avatar" class="user-avatar" src="" alt="err">
+                                                        <img id="owner-user-avatar" class="user-avatar" :src="'./'+datas.avatar" alt="err">
                                                     </div>
                                                     <div class="user-name">
-                                                        <a id="owner" href="#">datas.displayname</a>
+                                                        <a id="owner" href="#">{{datas.displayname}}</a>
                                                     </div>
                                                     <p id="company-owner"> - </p>
                                                     <div>
@@ -198,7 +198,7 @@
                                                     <div v-for="value in refer_blog" :key="Math.random()" class="list-items">
                                                         <div class="item">
                                                             <a href="link" title="">
-                                                                <img src="" alt=" loi">
+                                                                <img :src="'./public'+value.img_blog" alt=" loi">
                                                             </a>
                                                             <a  href="link">{{value.title_blog}}</a>
                                                         </div>
@@ -235,19 +235,16 @@ export default {
   },
   mounted(){
         this.loadView();
-        console.log('test');
-        
   },
   updated() {
         document.title = this.datas.title_blog;
-  		console.log(this.datas);
    },
   created(){
 
   },
   methods:{
     	loadView:function() {
-    		axios.get('http://localhost/codehero/api/blog/'+this.id)
+    		axios.get('api/blog/'+this.id)
     		.then((resp)=>{
     			this.datas=resp.data.data;
     			this.cmts=resp.data.cmts;

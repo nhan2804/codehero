@@ -124,6 +124,7 @@ export default {
     ContentLoader
   },
   updated(){
+    document.title = "Tài liệu học tập";
   	$('body .item_document:eq('+index+')').click();
     this.load=false;
   },
@@ -135,7 +136,7 @@ export default {
 
   methods:{
     	loadCateDoc:function() {
-    		axios.get('http://localhost/codehero/api/document')
+    		axios.get('api/document')
     		.then((rep)=>{
     			this.cate= rep.data;
     		})

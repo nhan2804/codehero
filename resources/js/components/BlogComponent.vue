@@ -157,7 +157,7 @@ export default {
   },
   methods:{
     	loadBlog:function() {
-    		axios.get('http://localhost/codehero/api/blog')
+    		axios.get('api/blog')
     		.then((rep)=>{
     			this.blog=rep.data.datas.splice(0,5);
     			this.blog1=rep.data.datas.splice(0,4);

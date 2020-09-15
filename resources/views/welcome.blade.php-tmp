@@ -174,7 +174,7 @@
                                     @endif
                                     <li class="dropdown_item"><router-link tag="a" :to="{ path: '/me'}">Thông tin</router-link></li>
                                     <li class="dropdown_item"><router-link tag="a" :to="{ path: '/me/course'}">Khóa học của tôi</router-link></li>
-                                    <li style="border-bottom: 1px solid #ccc" class="dropdown_item"><a href="{{URL::to("me/post")}}">Bài viết</a></li>
+                                    <li style="border-bottom: 1px solid #ccc" class="dropdown_item"><router-link tag="a" :to="{ path: '/me/blog'}">Bài viết của tôi</router-link></li>
                                     <li class="dropdown_item"><a href="{{URL::to("me/logout")}}">Đăng xuất</a></li>
                             </div>
                         </div>
@@ -184,14 +184,13 @@
                 </div>
         </nav>
         {{-- @yield('content') --}}
-
-            <router-view >
-            </router-view>
-
+            {{-- <router-view ></router-view> --}}
+             <router-view></router-view>
+            {{-- <HomeComponent></HomeComponent> --}}
         <footer>
             <div class="container mobile-container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <ul class="adress">
                             <span>ĐỊA CHỈ</span>
                                 <li>
@@ -205,7 +204,7 @@
                                 </li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <ul class="contact">
                             <span>THÔNG TIN</span>
                             <li>
@@ -225,7 +224,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <div class="search-text">
                             <div class="container mobile-container">
                                 <div class="row text-center">
@@ -240,7 +239,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <ul class="social">
                             <span>MẠNG XÃ HỘI</span>
                                <li>

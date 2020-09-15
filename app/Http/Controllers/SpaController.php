@@ -9,6 +9,6 @@ class SpaController extends Controller
     public function index()
     {
     	// return "hello";
-    	// return view('welcome');
+    	return view('welcome');
     }
 }

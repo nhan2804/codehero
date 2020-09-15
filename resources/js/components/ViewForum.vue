@@ -102,7 +102,7 @@
 				<input v-model="cmt.content" class="input_cmt" placeholder="Nhập để bình luận" name="cmt" id="cmt_input"/>
 			</div>
 			<div class="btn_cmt">
-				<input class="btn btn-primary" :data-auth="datas.id" :data-id="datas.id_post" id="cmt_forum" type="submit" v-on:click="addCmt" value="Bình luận">
+				<input class="btn btn-primary" :data-auth="datas.id" :data-id="datas.id_post" id="" type="submit" v-on:click="addCmt" value="Bình luận">
 			</div>
 		</form>
 		<h3 v-else class="left_cmt">Đăng nhập để bình luận</h3>
@@ -152,14 +152,14 @@ export default {
   	this.loadViewForum();
   	this.process();
   	
-  	
   },
   updated(){
+  	document.title = this.datas.title_post;
   	this.cmt.id_post=this.datas.id_post;
   },
   methods:{
   	loadViewForum:function() {
-		axios.get('http://localhost/codehero/api/forum/'+this.id+'/slug')
+		axios.get('api/forum/'+this.id+'/slug')
 		.then((rep)=> {
 			this.datas= rep.data.datas;
 			this.cmt_parent= rep.data.allcmt.data;
@@ -175,7 +175,17 @@ export default {
 		})
     },
     deleteCmt(id){
-    	this.cmt_parent.splice(0, 1);
+    	if (confirm("Bạn có chắc muốn xóa bình luận này không?")) {
+    	axios.post('api/forum/del-cmt',{
+    		id:id.id
+    	})
+		.then((rep)=>{
+		  this.getIndex(id.id);
+		})
+		.catch((e)=> {
+		  console.log(e);
+		});
+		}
     },
     editCmt(id){
     	this.cmt.content= id.content;
@@ -185,14 +195,17 @@ export default {
     getIndex(id){
     	this.cmt_parent.forEach((el,i)=>{
     		if(el.id_cmt==id){
-    			return i;
+    			console.log(el.id_cmt==id);
+    			this.cmt_parent.splice(i, 1);
     		}
     	});
     },
     addCmt(){
-    	axios.post('http://localhost/codehero/api/forum/add', {
+    	axios.post('api/forum/add', {
 		  content: this.cmt.content,
-		  id_post: this.cmt.id_post
+		  id_post: this.cmt.id_post,
+		  id_user: this.datas.id,
+		  link:window.location.href 
 		})
 		.then((rep)=>{
 		this.cmt.content='';
@@ -203,10 +216,13 @@ export default {
 		});
     },
     replyCmt(data){
-    	axios.post('http://localhost/codehero/api/forum/reply', {
+    	axios.post('api/forum/reply', {
 		  content:data.content,
 		  id_post: this.datas.id_post,
-		  id_cmt: data.id_cmt
+		  id_cmt: data.id_cmt,
+		  title:data.title_post,
+		  id_user:data.id_user,
+		  link:window.location.href 
 		})
 		.then((rep)=>{
 		  this.cmt_child.push(rep.data);
@@ -215,6 +231,7 @@ export default {
 		  console.log(e);
 		});
     },
+
     asc(){
     	this.cmt_parent.reverse();
     },

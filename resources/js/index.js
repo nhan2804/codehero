@@ -9,16 +9,17 @@ import ViewForum from './components/ViewForum'
 import CreateForum from './components/CreateForum'
 import ViewCourse from './components/ViewCourse'
 import MeCourse from './components/MeCourse'
+import MeBlog from './components/MeBlog'
 
 export const routes = [
+	{ path: '/', name: 'HomeComponent', component: HomeComponent },
 	{ path: '/blog', name: 'BlogComponent', component: BlogComponent },
 	{ path: '/forum/create', name: 'CreateForum', component: CreateForum },
 	{ path: '/forum', name: 'ForumComponent', component: ForumComponent },
-
-	{ path: '/', name: 'HomeComponent', component: HomeComponent },
 	{ path: '/blog/:id', name: 'ViewBlog', component: ViewBlog },
 	{ path: '/forum/:id/:slug', name: 'ViewForum', component: ViewForum },
 	{ path: '/document', name: 'Document', component: Document },
+	{ path: '/me/blog', name: 'MeBlog', component: MeBlog },
 	{ path: '/me/course/', name: 'MeCourse', component: MeCourse },
 	{ path: '/course', name: 'CourseComponent', component: CourseComponent },
 	

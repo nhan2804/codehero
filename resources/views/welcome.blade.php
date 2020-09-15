@@ -173,7 +173,7 @@
                                     @endif
                                     <li class="dropdown_item"><router-link tag="a" :to="{ path: '/me'}">Thông tin</router-link></li>
                                     <li class="dropdown_item"><router-link tag="a" :to="{ path: '/me/course'}">Khóa học của tôi</router-link></li>
-                                    <li style="border-bottom: 1px solid #ccc" class="dropdown_item"><a href="{{URL::to("me/post")}}">Bài viết</a></li>
+                                    <li style="border-bottom: 1px solid #ccc" class="dropdown_item"><router-link tag="a" :to="{ path: '/me/blog'}">Bài viết của tôi</router-link></li>
                                     <li class="dropdown_item"><a href="{{URL::to("me/logout")}}">Đăng xuất</a></li>
                             </div>
                         </div>
@@ -183,10 +183,9 @@
                 </div>
         </nav>
         {{-- @yield('content') --}}
-        
-            <router-view >
-            </router-view>
-       
+            {{-- <router-view ></router-view> --}}
+             <router-view></router-view>
+            {{-- <HomeComponent></HomeComponent> --}}
         <footer>
             <div class="container mobile-container">
                 <div class="row">

@@ -128,7 +128,7 @@
                                             </span>
                                         </p>
                                         <a href="#">
-                                            <p class="link btn_modal">Bắt Đầu&nbsp;
+                                            <p class="link btn_modal">Bắt Đầjjju&nbsp;
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </p>
                                         </a>
@@ -403,7 +403,7 @@
                                             Chúng tôi luôn sẵn sàng hỗ trợ bạn bất kỳ lúc nào</span>
                                     </p>
                                     <a href="#">
-                                        <p class="link">Message Us &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                                        <p class="link">Message Us???? &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></p>
                                     </a>
                                 </div>
                             </div>
@@ -419,12 +419,20 @@
 export default {
   name: 'HomeComponent',
   updated(){
-    console.log("Đã re ");
+    console.log("rểnder");
     this.load = false;
+  },
+  mounted(){
+    AOS.init({
+    easing: 'ease-out-back',
+    duration: 2000,
+    delay: 0,
+    once: true,
+    disable: 'mobile'
+ });
   },
   created(){
     this.load = false;
-console.log("Đã tạo");
   },
   data () {
     return {

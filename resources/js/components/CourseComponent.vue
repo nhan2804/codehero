@@ -77,6 +77,7 @@ export default {
     }
   },
   updated(){
+  	document.title = "Khóa học";
   	this.load=false;
   },
    mounted(){
@@ -122,7 +123,7 @@ export default {
 		    return slug;
 		},
     	loadCourse:function() {
-    		axios.get('http://localhost/codehero/api/course')
+    		axios.get('api/course')
     		.then((rep)=>{
     			this.course=rep.data;
     		})

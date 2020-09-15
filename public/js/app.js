@@ -2125,7 +2125,7 @@ __webpack_require__.r(__webpack_exports__);
     loadBlog: function loadBlog() {
       var _this = this;
 
-      axios.get('http://localhost/codehero/api/blog').then(function (rep) {
+      axios.get('api/blog').then(function (rep) {
         _this.blog = rep.data.datas.splice(0, 5);
         _this.blog1 = rep.data.datas.splice(0, 4);
         _this.blog2 = rep.data.datas;
@@ -2223,7 +2223,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CommentComponent',
@@ -2245,7 +2244,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     deleteCmt: function deleteCmt() {
       this.$emit('deleteCmt', {
-        id: this.cmt.id_cmt
+        id: this.cmt.id_cmt,
+        id_user: this.cmt.id
       });
     },
     editCmt: function editCmt() {
@@ -2257,7 +2257,8 @@ __webpack_require__.r(__webpack_exports__);
     replyCmt: function replyCmt() {
       this.$emit('replyCmt', {
         id_cmt: this.cmt.id_cmt,
-        content: this.rep.content
+        content: this.rep.content,
+        id_user: this.cmt.id
       });
     }
   }
@@ -2351,6 +2352,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   updated: function updated() {
+    document.title = "Khóa học";
     this.load = false;
   },
   mounted: function mounted() {
@@ -2399,7 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
     loadCourse: function loadCourse() {
       var _this2 = this;
 
-      axios.get('http://localhost/codehero/api/course').then(function (rep) {
+      axios.get('api/course').then(function (rep) {
         _this2.course = rep.data;
       })["catch"](function (e) {
         console.log(e);
@@ -2494,7 +2496,7 @@ __webpack_require__.r(__webpack_exports__);
     loadCate: function loadCate() {
       var _this = this;
 
-      axios.get('http://localhost/codehero/api/forum/category').then(function (resp) {
+      axios.get('api/forum/category').then(function (resp) {
         _this.cate = resp.data.cate_forum;
         _this.user = resp.data.user;
       })["catch"](function (e) {
@@ -2640,6 +2642,7 @@ __webpack_require__.r(__webpack_exports__);
     ContentLoader: vue_content_loader__WEBPACK_IMPORTED_MODULE_0__["ContentLoader"]
   },
   updated: function updated() {
+    document.title = "Tài liệu học tập";
     $('body .item_document:eq(' + index + ')').click();
     this.load = false;
   },
@@ -2652,7 +2655,7 @@ __webpack_require__.r(__webpack_exports__);
     loadCateDoc: function loadCateDoc() {
       var _this = this;
 
-      axios.get('http://localhost/codehero/api/document').then(function (rep) {
+      axios.get('api/document').then(function (rep) {
         _this.cate = rep.data;
       })["catch"](function (e) {
         console.log(e);
@@ -2798,9 +2801,10 @@ __webpack_require__.r(__webpack_exports__);
     this.page = this.$route.query.page;
     this.loadForum();
     this.process();
-    console.log(this.$route.query.page);
   },
+  created: function created() {},
   updated: function updated() {
+    document.title = "Diễn đàn thảo luận";
     this.page = this.$route.query.page;
     $('.item_forum').each(function (i, el) {
       if (i % 2 === 0) {
@@ -2828,7 +2832,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.getResults();
-      axios.get('http://localhost/codehero/api/forum').then(function (rep) {
+      axios.get('api/forum').then(function (rep) {
         _this.cate_data = rep.data.cate_forum;
         _this.new_data = rep.data.data_new;
         _this.user = rep.data.user;
@@ -2845,7 +2849,7 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log(page);
       this.page = page;
-      axios.get('http://localhost/codehero/api/forum?page=' + this.page).then(function (rep) {
+      axios.get('api/forum?page=' + this.page).then(function (rep) {
         _this2.datas = rep.data.data;
         _this2.page = rep.data.data.current_page;
         history.pushState({}, '', "/codehero/#/forum?page=".concat(_this2.page));
@@ -3293,15 +3297,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HomeComponent',
   updated: function updated() {
-    console.log("Đã re ");
+    console.log("rểnder");
     this.load = false;
+  },
+  mounted: function mounted() {
+    AOS.init({
+      easing: 'ease-out-back',
+      duration: 2000,
+      delay: 0,
+      once: true,
+      disable: 'mobile'
+    });
   },
   created: function created() {
     this.load = false;
-    console.log("Đã tạo");
   },
   data: function data() {
     return {
@@ -3349,6 +3372,106 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {};
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeBlog.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeBlog.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'MeBlog',
+  data: function data() {
+    return {
+      datas: []
+    };
+  },
+  mounted: function mounted() {
+    CKEDITOR.replace('edit_post');
+  },
+  created: function created() {
+    this.loadBlog();
+  },
+  methods: {
+    loadBlog: function loadBlog() {
+      var _this = this;
+
+      axios.get('api/me/blog').then(function (resp) {
+        _this.datas = resp.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    }
   }
 });
 
@@ -3412,7 +3535,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log('testđ');
-      axios.get('http://localhost/codehero/api/me/course').then(function (resp) {
+      axios.get('api/me/course').then(function (resp) {
         _this.courses = resp.data;
         console.log(resp);
       })["catch"](function (e) {
@@ -3733,18 +3856,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.loadView();
-    console.log('test');
   },
   updated: function updated() {
     document.title = this.datas.title_blog;
-    console.log(this.datas);
   },
   created: function created() {},
   methods: {
     loadView: function loadView() {
       var _this = this;
 
-      axios.get('http://localhost/codehero/api/blog/' + this.id).then(function (resp) {
+      axios.get('api/blog/' + this.id).then(function (resp) {
         _this.datas = resp.data.data;
         _this.cmts = resp.data.cmts;
         _this.next_blog = resp.data.next_blog;
@@ -3932,6 +4053,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ViewCourse',
   data: function data() {
@@ -3946,6 +4070,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.loadViewCourse();
+  },
+  updated: function updated() {
+    document.title = "Diễn đàn thảo luận";
   },
   computed: {
     getStar: function getStar() {
@@ -3966,11 +4093,12 @@ __webpack_require__.r(__webpack_exports__);
     loadViewCourse: function loadViewCourse() {
       var _this = this;
 
-      axios.get('http://localhost/codehero/api/course/' + this.id + '/slug').then(function (rep) {
+      axios.get('api/course/' + this.id + '/slug').then(function (rep) {
         _this.bought = rep.data.bought;
         _this.lessons = rep.data.lessons;
         _this.total_star = rep.data.total_star;
         _this.course_detail = rep.data.course_detail;
+        console.log(rep.data.course_detail);
         _this.user = rep.data.user;
         console.log("Đã lấy từ database xong, ngon nhé");
       })["catch"](function (e) {
@@ -4148,13 +4276,14 @@ __webpack_require__.r(__webpack_exports__);
     this.process();
   },
   updated: function updated() {
+    document.title = this.datas.title_post;
     this.cmt.id_post = this.datas.id_post;
   },
   methods: {
     loadViewForum: function loadViewForum() {
       var _this2 = this;
 
-      axios.get('http://localhost/codehero/api/forum/' + this.id + '/slug').then(function (rep) {
+      axios.get('api/forum/' + this.id + '/slug').then(function (rep) {
         _this2.datas = rep.data.datas;
         _this2.cmt_parent = rep.data.allcmt.data;
         _this2.cmt_child = rep.data.cmt_child;
@@ -4166,7 +4295,17 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteCmt: function deleteCmt(id) {
-      this.cmt_parent.splice(0, 1);
+      var _this3 = this;
+
+      if (confirm("Bạn có chắc muốn xóa bình luận này không?")) {
+        axios.post('api/forum/del-cmt', {
+          id: id.id
+        }).then(function (rep) {
+          _this3.getIndex(id.id);
+        })["catch"](function (e) {
+          console.log(e);
+        });
+      }
     },
     editCmt: function editCmt(id) {
       this.cmt.content = id.content;
@@ -4174,35 +4313,44 @@ __webpack_require__.r(__webpack_exports__);
       this.cmt_parent[index].content = cmt.content;
     },
     getIndex: function getIndex(id) {
+      var _this4 = this;
+
       this.cmt_parent.forEach(function (el, i) {
         if (el.id_cmt == id) {
-          return i;
+          console.log(el.id_cmt == id);
+
+          _this4.cmt_parent.splice(i, 1);
         }
       });
     },
     addCmt: function addCmt() {
-      var _this3 = this;
+      var _this5 = this;
 
-      axios.post('http://localhost/codehero/api/forum/add', {
+      axios.post('api/forum/add', {
         content: this.cmt.content,
-        id_post: this.cmt.id_post
+        id_post: this.cmt.id_post,
+        id_user: this.datas.id,
+        link: window.location.href
       }).then(function (rep) {
-        _this3.cmt.content = '';
+        _this5.cmt.content = '';
 
-        _this3.cmt_parent.push(rep.data);
+        _this5.cmt_parent.push(rep.data);
       })["catch"](function (e) {
         console.log(e);
       });
     },
     replyCmt: function replyCmt(data) {
-      var _this4 = this;
+      var _this6 = this;
 
-      axios.post('http://localhost/codehero/api/forum/reply', {
+      axios.post('api/forum/reply', {
         content: data.content,
         id_post: this.datas.id_post,
-        id_cmt: data.id_cmt
+        id_cmt: data.id_cmt,
+        title: data.title_post,
+        id_user: data.id_user,
+        link: window.location.href
       }).then(function (rep) {
-        _this4.cmt_child.push(rep.data);
+        _this6.cmt_child.push(rep.data);
       })["catch"](function (e) {
         console.log(e);
       });
@@ -42252,11 +42400,6 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("span", {
-                        staticClass: "tag_name",
-                        attrs: { id: "tag_name_" + _vm.cmt.id_cmt }
-                      }),
-                      _vm._v(" "),
                       _c("input", {
                         directives: [
                           {
@@ -42267,7 +42410,6 @@ var render = function() {
                           }
                         ],
                         staticClass: "input_cmt",
-                        staticStyle: { "padding-left": "70px" },
                         attrs: {
                           id: "reply_cmt_" + _vm.cmt.id_cmt,
                           placeholder: "Nhập để trả lời bình luận",
@@ -42479,9 +42621,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "head-course hide-on-mobile" }, [
       _c("img", {
         staticStyle: { width: "100%" },
-        attrs: {
-          src: "http://localhost/codehero/public/images/course_banner.jpg"
-        }
+        attrs: { src: "http://localhost/codehero/public/images/banner1.png" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "block-top-head", attrs: { id: "search" } }, [
@@ -43713,7 +43853,7 @@ var staticRenderFns = [
                         _c("a", { attrs: { href: "#" } }, [
                           _c("p", { staticClass: "link btn_modal" }, [
                             _vm._v(
-                              "Bắt Đầu \n                                            "
+                              "Bắt Đầjjju \n                                            "
                             ),
                             _c("i", {
                               staticClass: "fa fa-angle-right",
@@ -43857,25 +43997,51 @@ var staticRenderFns = [
                   "div",
                   {
                     staticClass: "col-lg-6",
+                    staticStyle: { right: "40px" },
                     attrs: { "data-aos": "fade-right" }
                   },
                   [
-                    _c("img", {
-                      attrs: {
-                        src: "public/frontend/img/chia-khoa-lap-trinh.png"
-                      }
-                    })
+                    _c("div", { staticStyle: { display: "flex" } }, [
+                      _c("img", {
+                        staticClass: "image_key_section",
+                        attrs: { src: "public/images/home1.png" }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticClass: "image_key_section",
+                        attrs: { src: "public/images/home2.png" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticStyle: { "text-align": "center" } }, [
+                      _c("img", {
+                        staticClass: "image_key_section",
+                        attrs: { src: "public/images/home3.png" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticStyle: { display: "flex" } }, [
+                      _c("img", {
+                        staticClass: "image_key_section",
+                        attrs: { src: "public/images/home4.png" }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticClass: "image_key_section",
+                        attrs: { src: "public/images/home5.png" }
+                      })
+                    ])
                   ]
                 ),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass: "col-lg-6",
+                    staticClass: "col-lg-6 responsive-col",
                     staticStyle: {
                       position: "relative",
-                      top: "25px",
-                      left: "50px"
+                      top: "135px",
+                      left: "100px"
                     }
                   },
                   [
@@ -44361,7 +44527,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("a", { attrs: { href: "#" } }, [
                           _c("p", { staticClass: "link" }, [
-                            _vm._v("Message Us  "),
+                            _vm._v("Message Us????  "),
                             _c("i", {
                               staticClass: "fa fa-angle-right",
                               attrs: { "aria-hidden": "true" }
@@ -44544,6 +44710,215 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("h3", [_vm._v("Danh sách bài viết")]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("table", { staticClass: "table list" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.datas, function(value) {
+                return _c("tr", [
+                  _vm._m(2, true),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(value.title_blog))]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-success" }, [
+                    _vm._v("Đã duyệt")
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(value.view_blog))]),
+                  _vm._v(" "),
+                  _vm._m(3, true)
+                ])
+              }),
+              0
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(4)
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "table-responsive" }, [
+      _c(
+        "a",
+        { staticClass: "btn btn-success option", attrs: { href: "#add_blog" } },
+        [_c("i", { staticClass: "fas fa-plus" }), _vm._v(" Thêm bài viết")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-danger option", attrs: { id: "del_blog" } },
+        [_c("i", { staticClass: "fas fa-ban" }), _vm._v(" Xóa")]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control option",
+        attrs: { type: "text", placeholder: "Tìm kiếm...", name: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _c("input", {
+            staticClass: "check-all",
+            attrs: { type: "checkbox", name: "" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tiêu đề bài viết")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tình trạng")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Lượt xem")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Chức Năng")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("input", { attrs: { type: "checkbox", name: "" } })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "far fa-edit" }),
+        _vm._v(" Sửa")
+      ]),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          attrs: {
+            onclick:
+              "return confirm('Bạn có chắc muốn xóa danh mục này không?');",
+            href: "#"
+          }
+        },
+        [_c("i", { staticClass: "far fa-trash-alt" }), _vm._v("Xóa")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-12", attrs: { id: "add_blog" } }, [
+      _c(
+        "form",
+        {
+          attrs: { action: "", method: "post", enctype: "multipart/form-data" }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Tiêu đề bài viết")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", name: "title_blog" }
+            }),
+            _vm._v(" "),
+            _c("label", [_vm._v("Ảnh bài viết")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: {
+                type: "file",
+                name: "img_upload",
+                id: "img_upload",
+                accept: "image/*"
+              }
+            }),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("label", [_vm._v("Nội dung bài viết")]),
+            _vm._v(" "),
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: {
+                id: "edit_post",
+                name: "content_blog",
+                cols: "80",
+                rows: "10"
+              }
+            }),
+            _vm._v(" "),
+            _c("label", [_vm._v("Chủ đề bài viết")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "form-control", attrs: { name: "cate_parent" } },
+              [_c("option", { attrs: { value: "" } }, [_vm._v("Vui thôi")])]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "btn btn-primary",
+              attrs: { type: "submit", name: "", value: "Đăng bài" }
+            })
+          ])
+        ]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -44813,7 +45188,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("img", {
                               staticClass: "img_auth",
-                              attrs: { src: "loi" }
+                              attrs: { alt: "?", src: "./" + _vm.datas.avatar }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "author-name" }, [
@@ -44860,7 +45235,14 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "row main-content" }, [
                           _c("div", { staticClass: "col-md-12" }, [
-                            _vm._m(3),
+                            _c("div", { staticClass: "main-image" }, [
+                              _c("img", {
+                                attrs: {
+                                  src: "./public" + _vm.datas.img_blog,
+                                  alt: "loi"
+                                }
+                              })
+                            ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "blog-content" }, [
                               _c("h1", [_vm._v(_vm._s(_vm.datas.title_blog))]),
@@ -44875,9 +45257,9 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _vm._m(4),
+                        _vm._m(3),
                         _vm._v(" "),
-                        _vm._m(5)
+                        _vm._m(4)
                       ]),
                       _vm._v(" "),
                       _c(
@@ -44898,7 +45280,7 @@ var render = function() {
                               [
                                 _c("div", { staticClass: "item" }, [
                                   _c("div", { staticClass: "row" }, [
-                                    _vm._m(6, true),
+                                    _vm._m(5, true),
                                     _vm._v(" "),
                                     _c(
                                       "div",
@@ -44913,18 +45295,18 @@ var render = function() {
                                             )
                                           ]),
                                           _vm._v(" "),
-                                          _vm._m(7, true)
+                                          _vm._m(6, true)
                                         ]),
                                         _vm._v(" "),
                                         _c("div", { staticClass: "bottom" }, [
-                                          _vm._m(8, true),
+                                          _vm._m(7, true),
                                           _vm._v(" "),
                                           _c("div", { staticClass: "author" }, [
                                             _c("span", [_vm._v("Tác giả:")]),
                                             _vm._v(" "),
-                                            _vm._m(9, true),
+                                            _vm._m(8, true),
                                             _vm._v(" "),
-                                            _vm._m(10, true),
+                                            _vm._m(9, true),
                                             _vm._v(" "),
                                             _c(
                                               "span",
@@ -44932,7 +45314,7 @@ var render = function() {
                                               [_vm._v(_vm._s(value.created_at))]
                                             ),
                                             _vm._v(" "),
-                                            _vm._m(11, true),
+                                            _vm._m(10, true),
                                             _vm._v(" "),
                                             _c(
                                               "span",
@@ -44943,7 +45325,7 @@ var render = function() {
                                               [_vm._v("553")]
                                             ),
                                             _vm._v(" "),
-                                            _vm._m(12, true),
+                                            _vm._m(11, true),
                                             _vm._v(" "),
                                             _c(
                                               "span",
@@ -44969,7 +45351,49 @@ var render = function() {
                     "div",
                     { staticClass: "col col-md-3 col-sm-12 col-12 sidebar" },
                     [
-                      _vm._m(13),
+                      _c("div", { staticClass: "block author-info" }, [
+                        _c("h3", [_vm._v("Tác giả")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "author" }, [
+                          _c("div", { staticClass: "avatar" }, [
+                            _c("img", {
+                              staticClass: "user-avatar",
+                              attrs: {
+                                id: "owner-user-avatar",
+                                src: "./" + _vm.datas.avatar,
+                                alt: "err"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "user-name" }, [
+                            _c("a", { attrs: { id: "owner", href: "#" } }, [
+                              _vm._v(_vm._s(_vm.datas.displayname))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { attrs: { id: "company-owner" } }, [
+                            _vm._v(" - ")
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(12),
+                          _vm._v(" "),
+                          _vm._m(13),
+                          _vm._v(" "),
+                          _vm._m(14),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "hide",
+                              attrs: { id: "more-achievement" }
+                            },
+                            [_vm._v("Xem thêm")]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(15)
+                        ])
+                      ]),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -44983,7 +45407,18 @@ var render = function() {
                               { key: Math.random(), staticClass: "list-items" },
                               [
                                 _c("div", { staticClass: "item" }, [
-                                  _vm._m(14, true),
+                                  _c(
+                                    "a",
+                                    { attrs: { href: "link", title: "" } },
+                                    [
+                                      _c("img", {
+                                        attrs: {
+                                          src: "./public" + value.img_blog,
+                                          alt: " loi"
+                                        }
+                                      })
+                                    ]
+                                  ),
                                   _vm._v(" "),
                                   _c("a", { attrs: { href: "link" } }, [
                                     _vm._v(_vm._s(value.title_blog))
@@ -45029,14 +45464,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "comment-icon" }, [
       _c("i", { staticClass: "fa fa-share-alt" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "main-image" }, [
-      _c("img", { attrs: { src: "", alt: "loi" } })
     ])
   },
   function() {
@@ -45121,7 +45548,11 @@ var staticRenderFns = [
               _c("span", { staticClass: "likeButton" }, [
                 _c("img", {
                   staticClass: "up",
-                  attrs: { src: "", alt: "err", id: "img_1847944" }
+                  attrs: {
+                    src: "http://localhost/codehero/public/images/like.svg",
+                    alt: "err",
+                    id: "img_1847944"
+                  }
                 }),
                 _vm._v(" "),
                 _c(
@@ -45272,98 +45703,50 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "block author-info" }, [
-      _c("h3", [_vm._v("Tác giả")]),
+    return _c("div", [
+      _c(
+        "a",
+        { staticClass: "total-post", attrs: { href: "#", id: "total-post" } },
+        [_vm._v("17 bài viết")]
+      ),
+      _vm._v(" |\n                                                        "),
+      _c("span", { attrs: { id: "total-follow" } }, [_vm._v("17")]),
       _vm._v(" "),
-      _c("div", { staticClass: "author" }, [
-        _c("div", { staticClass: "avatar" }, [
-          _c("img", {
-            staticClass: "user-avatar",
-            attrs: { id: "owner-user-avatar", src: "", alt: "err" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "user-name" }, [
-          _c("a", { attrs: { id: "owner", href: "#" } }, [
-            _vm._v("datas.displayname")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", { attrs: { id: "company-owner" } }, [_vm._v(" - ")]),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "a",
-            {
-              staticClass: "total-post",
-              attrs: { href: "#", id: "total-post" }
-            },
-            [_vm._v("17 bài viết")]
-          ),
+      _c("span", { staticClass: "follower-text" }, [_vm._v("người theo dõi")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info",
+          attrs: { id: "follow", value: "0", type: "button" }
+        },
+        [
+          _c("i", { staticClass: "fa fa-wifi" }),
           _vm._v(
-            " |\n                                                        "
-          ),
-          _c("span", { attrs: { id: "total-follow" } }, [_vm._v("17")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "follower-text" }, [
-            _vm._v("người theo dõi")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-info",
-              attrs: { id: "follow", value: "0", type: "button" }
-            },
-            [
-              _c("i", { staticClass: "fa fa-wifi" }),
-              _vm._v(
-                " Theo dõi\n                                                        "
-              )
-            ]
+            " Theo dõi\n                                                        "
           )
-        ]),
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { attrs: { id: "achievement-owner" } }, [
+      _c("li", [
+        _c("i", {
+          staticClass: "fa fa-check-circle",
+          staticStyle: { position: "relative" }
+        }),
         _vm._v(" "),
-        _c("ul", { attrs: { id: "achievement-owner" } }, [
-          _c("li", [
-            _c("i", {
-              staticClass: "fa fa-check-circle",
-              staticStyle: { position: "relative" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("Best Dev In The World")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "hide", attrs: { id: "more-achievement" } }, [
-          _vm._v("Xem thêm")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "social-network" }, [
-          _c("a", { attrs: { id: "facebook", target: "_blank", href: "#" } }, [
-            _c("i", { staticClass: "fab fa-facebook-f" })
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "not-allowed",
-              attrs: { id: "twitter", href: "javaScript:void(0)" }
-            },
-            [_c("i", { staticClass: "fab fa-twitter-square" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "not-allowed",
-              attrs: { id: "linkedIn", href: "javaScript:void(0)" }
-            },
-            [_c("i", { staticClass: "fab fa-linkedin" })]
-          )
-        ])
+        _c("span", [_vm._v("Best Dev In The World")])
       ])
     ])
   },
@@ -45371,8 +45754,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "link", title: "" } }, [
-      _c("img", { attrs: { src: "", alt: " loi" } })
+    return _c("div", { staticClass: "social-network" }, [
+      _c("a", { attrs: { id: "facebook", target: "_blank", href: "#" } }, [
+        _c("i", { staticClass: "fab fa-facebook-f" })
+      ]),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "not-allowed",
+          attrs: { id: "twitter", href: "javaScript:void(0)" }
+        },
+        [_c("i", { staticClass: "fab fa-twitter-square" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "not-allowed",
+          attrs: { id: "linkedIn", href: "javaScript:void(0)" }
+        },
+        [_c("i", { staticClass: "fab fa-linkedin" })]
+      )
     ])
   }
 ]
@@ -45399,6 +45802,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm._m(0),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("br"),
     _vm._v(" "),
     _c("div", { staticClass: "group", attrs: { id: "layout-main" } }, [
       _c("div", { staticClass: "group", attrs: { id: "layout-content" } }, [
@@ -45632,7 +46043,9 @@ var render = function() {
                           _vm._v(" "),
                           _c("h3", [_vm._v("Đánh giá khóa học này?")]),
                           _vm._v(" "),
-                          _vm._m(6)
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _vm._m(7)
                         ])
                       : _vm._e()
                   ])
@@ -45829,6 +46242,43 @@ var staticRenderFns = [
         })
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "cmt_rate hidden" }, [
+      _c("form", { attrs: { onsubmit: "return false" } }, [
+        _c("div", { staticClass: "comment" }, [
+          _c("div", { staticClass: "info_cmt" }, [
+            _c("img", { staticClass: "img_cmt", attrs: { src: "", alt: "" } }),
+            _vm._v(" "),
+            _c("h3", { staticClass: "name_auth" }, [_vm._v("Nhẫn")])
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input_cmt",
+            attrs: {
+              placeholder: "Nhập để đánh giá",
+              name: "cmt",
+              id: "rate_input"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "btn_cmt" }, [
+          _c("input", {
+            staticClass: "btn btn-primary",
+            attrs: {
+              "data-id": "",
+              id: "btn_rate",
+              type: "submit",
+              value: "Đánh giá"
+            }
+          })
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -46216,7 +46666,7 @@ var render = function() {
                   attrs: {
                     "data-auth": _vm.datas.id,
                     "data-id": _vm.datas.id_post,
-                    id: "cmt_forum",
+                    id: "",
                     type: "submit",
                     value: "Bình luận"
                   },
@@ -61559,6 +62009,7 @@ Vue.prototype.$scrollToTop = function () {
 };
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  // history: true,
   mode: 'hash',
   // mode: 'history',
   routes: _index__WEBPACK_IMPORTED_MODULE_1__["routes"],
@@ -61567,8 +62018,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   }
 });
 var app = new Vue({
-  el: '#app',
-  router: router
+  router: router,
+  el: '#app' // render: h => h(App) //add this new line
+
 });
 
 /***/ }),
@@ -62188,6 +62640,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/MeBlog.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/MeBlog.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MeBlog_vue_vue_type_template_id_4d9ed2f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true& */ "./resources/js/components/MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true&");
+/* harmony import */ var _MeBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MeBlog.vue?vue&type=script&lang=js& */ "./resources/js/components/MeBlog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MeBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MeBlog_vue_vue_type_template_id_4d9ed2f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MeBlog_vue_vue_type_template_id_4d9ed2f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "4d9ed2f6",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MeBlog.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MeBlog.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/MeBlog.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MeBlog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeBlog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeBlog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeBlog_vue_vue_type_template_id_4d9ed2f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeBlog.vue?vue&type=template&id=4d9ed2f6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeBlog_vue_vue_type_template_id_4d9ed2f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeBlog_vue_vue_type_template_id_4d9ed2f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/MeCourse.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/MeCourse.vue ***!
@@ -62571,6 +63092,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CreateForum__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/CreateForum */ "./resources/js/components/CreateForum.vue");
 /* harmony import */ var _components_ViewCourse__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ViewCourse */ "./resources/js/components/ViewCourse.vue");
 /* harmony import */ var _components_MeCourse__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/MeCourse */ "./resources/js/components/MeCourse.vue");
+/* harmony import */ var _components_MeBlog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/MeBlog */ "./resources/js/components/MeBlog.vue");
  // import HeaderComponent from './components/HeaderComponent'
 
 
@@ -62582,7 +63104,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var routes = [{
+  path: '/',
+  name: 'HomeComponent',
+  component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, {
   path: '/blog',
   name: 'BlogComponent',
   component: _components_BlogComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -62595,10 +63122,6 @@ var routes = [{
   name: 'ForumComponent',
   component: _components_ForumComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
 }, {
-  path: '/',
-  name: 'HomeComponent',
-  component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
-}, {
   path: '/blog/:id',
   name: 'ViewBlog',
   component: _components_ViewBlog__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -62610,6 +63133,10 @@ var routes = [{
   path: '/document',
   name: 'Document',
   component: _components_Document__WEBPACK_IMPORTED_MODULE_2__["default"]
+}, {
+  path: '/me/blog',
+  name: 'MeBlog',
+  component: _components_MeBlog__WEBPACK_IMPORTED_MODULE_10__["default"]
 }, {
   path: '/me/course/',
   name: 'MeCourse',

@@ -42,8 +42,7 @@
 						<img class="img_cmt" :src="'./'+user.avatar" alt="">
 						<h3 class="name_auth">{{user.displayname}}</h3>
 					</div>
-					<span :id="'tag_name_'+cmt.id_cmt" class="tag_name"></span>
-					<input style="padding-left: 70px;"  class="input_cmt" :id="'reply_cmt_'+cmt.id_cmt" placeholder="Nhập để trả lời bình luận" name="cmt" v-model="rep.content" >
+					<input class="input_cmt" :id="'reply_cmt_'+cmt.id_cmt" placeholder="Nhập để trả lời bình luận" name="cmt" v-model="rep.content" >
 				</div>
 				<div class="btn_cmt">
 					<input class="btn btn-primary btn_reply_cmt " :data-cmt="cmt.id_cmt" :data-auth="user.id" :data-id="idPost" type="submit" link="comment_" v-on:click="replyCmt" value="Bình luận">
@@ -74,13 +73,13 @@ export default {
   },
   methods:{
   	deleteCmt(){
-  		this.$emit('deleteCmt',{id:this.cmt.id_cmt});
+  		this.$emit('deleteCmt',{id:this.cmt.id_cmt,id_user:this.cmt.id});
   	},
   	editCmt(){
   		this.$emit('editCmt',{content:this.cmt.content_cmt,id:this.cmt.id_cmt});
   	},
   	replyCmt(){
-  		this.$emit('replyCmt',{id_cmt:this.cmt.id_cmt,content:this.rep.content});
+  		this.$emit('replyCmt',{id_cmt:this.cmt.id_cmt,content:this.rep.content,id_user:this.cmt.id});
   	}
   }
 }

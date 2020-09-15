@@ -17,7 +17,7 @@ body{
 }
 .course-head {
     background-color: #6400e4;
-    padding-top: 80px;
+    /* padding-top: 80px; */
     margin-top: -61px;
     height: 396px;
 }

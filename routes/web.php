@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //router Vuejs
-// Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+// Route::get('/', 'SpaController@index')->where('any', '.*');
 
 
 Route::get('error404.php',function()
@@ -45,9 +45,6 @@ Route::group(['prefix' => 'forum'], function() {
 	Route::get('/post/{id}','ForumController@view_post'); 
 	Route::post('/search-post','ForumController@search_post'); 
 	Route::post('/post/cmt-blog','ForumController@cmt_blog'); 
-
-
-
 
 	//error
 	

@@ -12,14 +12,10 @@
     		</ul>
     	</div>
     </div>
-<<<<<<< HEAD
-
-=======
     <br>
     <br>
     <br>
     <br>
->>>>>>> 13f6ab3fae6707483d636cbacc212c0fda1ce144
     <div id="layout-main" class="group">
             <div id="layout-content" class="group">
                 <div id="content" class="group">
@@ -143,21 +139,21 @@
     										<i class="fa fa-star icon-star" data-index="3" title="Tốt"></i>
     										<i class="fa fa-star icon-star" data-index="4" title="Tuyệt vời!"></i>
     									</div>
-    									<!-- <div class="cmt_rate hidden">
+    									<div class="cmt_rate hidden">
     										<form onsubmit="return false">
     											<div class="comment">
     												<div class="info_cmt">
-    													<img class="img_cmt" src="{{asset(Session::get('img'))}}" alt="">
-    													<h3 class="name_auth">{{Session::get('name')}}</h3>
+    													<img class="img_cmt" src="" alt="">
+    													<h3 class="name_auth">Nhẫn</h3>
     												</div>
-    												{{csrf_field()}}
+    								
     												<input class="input_cmt" placeholder="Nhập để đánh giá" name="cmt" id="rate_input">
     											</div>
     											<div class="btn_cmt">
-    												<input class="btn btn-primary" data-id="{{$course_detail['id_course']}}" id="btn_rate" type="submit" value="Đánh giá">
+    												<input class="btn btn-primary" data-id="" id="btn_rate" type="submit" value="Đánh giá">
     											</div>
     										</form>
-    									</div> -->
+    									</div>
                                 </div>
                             </div>
                         </div>
@@ -184,6 +180,10 @@ export default {
   },
   mounted(){
   	this.loadViewCourse();
+
+  },
+  updated(){
+     document.title = "Diễn đàn thảo luận";
   },
   computed:{
   	getStar:function() {
@@ -200,12 +200,13 @@ export default {
   },
   methods:{
   	loadViewCourse:function() {
-    		axios.get('http://localhost/codehero/api/course/'+this.id+'/slug')
+    		axios.get('api/course/'+this.id+'/slug')
     		.then((rep)=>{
     			this.bought=rep.data.bought;
     			this.lessons=rep.data.lessons;
     			this.total_star=rep.data.total_star;
     			this.course_detail=rep.data.course_detail;
+                console.log(rep.data.course_detail);
     			this.user=rep.data.user;
     			console.log("Đã lấy từ database xong, ngon nhé");
     		})

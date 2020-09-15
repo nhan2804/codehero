@@ -47,7 +47,7 @@ export default {
   methods:{
   	loadCourse:function() {
   		console.log('testđ');
-		axios.get('http://localhost/codehero/api/me/course')
+		axios.get('api/me/course')
 		.then((resp)=>{
 			this.courses=resp.data;
 			console.log(resp);
