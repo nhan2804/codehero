@@ -48,9 +48,6 @@
 												<a class="bg-facebook" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><i class="fab fa-facebook-f"></i> Share</a>
 												<a class="bg-twitter" href="https://twitter.com/share?text=" target="_blank"><i class="fab fa-twitter"></i> Tweet</a>
 												<a class="bg-google-plus" href="https://plus.google.com/share?url=" target="_blank"><i class="fas fa-plus"></i> Plus</a>
-												<a class="bg-pinterest" href="" target="_blank"><i class="fab fa-pinterest-p"></i> Pin</a>
-                                                <a class="bg-email" href="" target="_blank"><i class="fas fa-envelope"></i> Gmail</a>
-                                                <a class="bg-messenger" href="" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -90,7 +87,6 @@
                                                                 </div>
 																<div class="comment-message" id="top-comment-message"></div>
 														<!-- @else -->
-															<h3 left_cmt>Đăng nhập để bình luận</h3>
                                                         <!-- @endif -->
 															</form>                                           
 														</div>

@@ -9,8 +9,8 @@
 	<h3>Danh sách bài viết</h3>  
 	<div class="table-responsive">
 	<a class="btn btn-success option" href="#add_blog"><i class="fas fa-plus"></i> Thêm bài viết</a> 
-	<button class="btn btn-danger option" id="del_blog"><i class="fas fa-ban"></i> Xóa</button>
-	<br>
+	<button class="btn btn-danger option" id="del_blog"><i class="fas fa-ban"></i> Xóa bài viết</button>
+	<br><br>
 	<input type="text" placeholder="Tìm kiếm..." class="form-control option" name="">
 	</div>
 	<br>
@@ -42,16 +42,16 @@
 		<form action="" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label>Tiêu đề bài viết</label>
-		<input class="form-control" type="text" name="title_blog">
+		<input class="form-control" type="text" name="title_blog"><br>
 		<label>Ảnh bài viết</label>
 		<input type="file" name="img_upload" id="img_upload" accept="image/*">
 		<br>
 		<label>Nội dung bài viết</label>
-		<textarea id="edit_post" class="form-control" name="content_blog" cols="80" rows="10"></textarea>
+		<textarea id="edit_post" class="form-control" name="content_blog" cols="80" rows="10"></textarea><br>
 		<label>Chủ đề bài viết</label>
 		<select name="cate_parent" class="form-control">
 			<option value="">Vui thôi</option>
-		</select>
+		</select><br>
 		<input type="submit" name="" class="btn btn-primary" value="Đăng bài">
 	</div>
 	</form>

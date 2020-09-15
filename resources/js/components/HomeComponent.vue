@@ -128,7 +128,7 @@
                                             </span>
                                         </p>
                                         <a href="#">
-                                            <p class="link btn_modal">Bắt Đầjjju&nbsp;
+                                            <p class="link btn_modal">Bắt Đầu&nbsp;
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </p>
                                         </a>
@@ -214,15 +214,15 @@
             </div>
             <div style="margin-top: 100px;" class="container-fluid">
                 <div class="container key_section landing-section mobile-container">
-                    <h2 class="title_section">Lập trình<br> là xu thế của tương lai</h2><br><br>
+                    <h2 class="title_section" style="position: relative; top: 30px">Lập trình<br> là xu thế của tương lai</h2><br><br>
                     <div class="row">
-                        <div data-aos="fade-right" class="col-lg-6" style="right: 40px">
+                        <div data-aos="fade-right" class="col-lg-6 responsive_img" style="right: 100px">
                             <div style="display: flex">
                                 <img src="public/images/home1.png" class="image_key_section"/>
                                 <img src="public/images/home2.png" class="image_key_section"/>
                             </div>
                             <div style="text-align: center">
-                                <img src="public/images/home3.png" class="image_key_section"/>
+                                <img src="public/images/home3.png" class="image_key_section" style="margin-right:-145px"/>
                             </div>
                             <div style="display: flex">
                                 <img src="public/images/home4.png" class="image_key_section"/>
@@ -403,7 +403,7 @@
                                             Chúng tôi luôn sẵn sàng hỗ trợ bạn bất kỳ lúc nào</span>
                                     </p>
                                     <a href="#">
-                                        <p class="link">Message Us???? &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                                        <p class="link">Message Us &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></p>
                                     </a>
                                 </div>
                             </div>

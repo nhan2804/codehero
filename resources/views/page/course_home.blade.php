@@ -42,8 +42,8 @@
 						<?php
 					    $img= "public".$value->img_course;
 					    $desc=$value->desc_course;
-					    if (strlen($desc)>80) {
-					    	$desc= substr($desc, 0,80) . '...</p>';
+					    if (strlen($desc)>20) {
+					    	$desc= substr($desc, 0,20) . '...</p>';
 					    }
 					    if ($id_cate!=$value->id_cate) {
 					    	echo '<div class="col-lg-12" >

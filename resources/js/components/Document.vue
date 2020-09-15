@@ -14,7 +14,6 @@
       </div>
   </div>
   
-  
   <div v-if="load">
   <content-loader>
     <rect x="0" y="0" width="100%" height="60" />
@@ -78,6 +77,7 @@
   <div class="hide-on-table-and-moblie">
     <img src="public/images/doc.png" alt="" style="width: 100%">
   </div>
+  <br><br>
   <div class="container">
   	<div class="row">
     	<div class="col-lg-3 col-md-4 col-sm-12">

@@ -6,7 +6,7 @@
 
 	<div class="row">
 		<h3 class="col-lg-12">Khóa học của tôi</h3>
-	<article v-for="(v,i) in courses" class="course-item col-xs-6 col-md-4 col-lg-3 mb-4">
+	<article v-for="(v,i) in convertCourse" class="course-item col-xs-6 col-md-4 col-lg-3 mb-4">
 			<div class="border_course">
 				<div class="wrap-course-item">
 					<div class="course-thumb">
@@ -41,8 +41,20 @@ export default {
   },
   data () {
     return {
-    	courses:{}
-    }
+    	courses:[]
+	}
+  },
+	computed:{
+  			convertCourse(){
+  			return this.courses.map((el,index)=>{
+  				if(el.desc_course.length>80){
+					el.desc_course=el.desc_course.slice(0,80)+'...</p>';
+					return el;
+	  			}else{
+	  				return el;
+	  			}
+  			});
+  		}
   },
   methods:{
   	loadCourse:function() {
@@ -50,13 +62,13 @@ export default {
 		axios.get('api/me/course')
 		.then((resp)=>{
 			this.courses=resp.data;
-			console.log(resp);
+
 		})
 		.catch((e)=>{
 			console.log(e);
 		})
 	}
-  }
+  },
 }
 </script>
 

@@ -58,11 +58,13 @@
 				<div v-for="value in blog" style="margin-bottom: 12px;" class="div__blog--hover item_small_blog">
 					<div :style="{backgroundImage:'url(public/'+value.img_blog+')'}"  style="background-position: center;background-size: cover; height: 120px;border: 1px solid #ccc"></div>
 					<div class="info_blog">
-						<div class="blog_rank">
-							hi
-						</div>
+							<span v-for="i in rank">
+								<div class="blog_rank">
+									{{ i.index++}}
+								</div>
+							</span>
 						<div class="blog_name" style="flex: 1">
-							<span style="{backGround:value.color_cate}" class="blog_cate">{{value.name}}</span>
+							<span v-bind:style="{backgroundColor:value.color_cate}" class="blog_cate">{{value.name}}</span>
 							<router-link tag="a" class="title__blog--link" :to="{ path: '/blog/' + value.id_blog}">{{value.title_blog}}</router-link>
 						</div>
 					</div>
@@ -72,7 +74,7 @@
 				<div class="item_big_blog">
 					<div v-for="value in blog1" class="div__blog--hover" :style="{backgroundImage:'url(public/'+value.img_blog+')'}" style="background-position: center;background-size: cover; height: 230px;margin-bottom: 12px;position: relative;">
 						<div class="item_meta">
-							<span class="item_cate" style="{color:value.color_cate}">{{value.name}}</span>
+							<span class="item_cate" v-bind:style="{backgroundColor:value.color_cate}">{{value.name}}</span>
 							<span class="item_date">/ {{value.created_at}}</span>
 							<router-link tag="a" class="item_link" :to="{ path: '/blog/' + value.id_blog}"><h3>{{value.title_blog}}</h3></router-link>
 						</div>	
@@ -83,7 +85,7 @@
 				<div class="item_big_blog horizontal">
 					<div  v-for="value in blog2" class="div__blog--hover div_blog_medium" :style="{backgroundImage:'url(public/'+value.img_blog+')'}" style=";background-position: center;background-size: cover; ">
 						<div class="item_meta">
-							<span class="item_cate" style="{color:value.color_cate}">{{value.name}}</span>
+							<span class="item_cate" v-bind:style="{backgroundColor:value.color_cate}">{{value.name}}</span>
 							<span class="item_date">/ {{value.created_at}}</span>
 							<router-link tag="a" class="item_link item_link_cus" :to="{ path: '/blog/' + value.id_blog}"><h3>{{value.title_blog}}</h3></router-link>
 						</div>	
@@ -121,7 +123,7 @@
 			</div>
 			<div class="col-md-4 col">
 				<div class="hide-on-table-and-moblie">
-					<img src="" style="width: 16em; margin-left: 7em" class="banner_shadow"/>
+					<img src="public/images/banner-7.png" style="width: 16em; margin-left: 7em" class="banner_shadow"/>
 				</div>
 			</div>
 	</div>
@@ -142,7 +144,10 @@ export default {
     	blog1:[],
     	blog2:[],
     	new_blog:[],
-    	load:true
+		load:true,
+		rank:[
+			{index: -1004},
+		]
     }
   },
   updated(){
