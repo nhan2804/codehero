@@ -2099,6 +2099,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'BlogComponent',
   data: function data() {
@@ -2110,7 +2112,10 @@ __webpack_require__.r(__webpack_exports__);
       blog1: [],
       blog2: [],
       new_blog: [],
-      load: true
+      load: true,
+      rank: [{
+        index: -1004
+      }]
     };
   },
   updated: function updated() {
@@ -3625,8 +3630,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      courses: {}
+      courses: []
     };
+  },
+  computed: {
+    convertCourse: function convertCourse() {
+      return this.courses.map(function (el, index) {
+        if (el.desc_course.length > 80) {
+          el.desc_course = el.desc_course.slice(0, 80) + '...</p>';
+          return el;
+        } else {
+          return el;
+        }
+      });
+    }
   },
   methods: {
     loadCourse: function loadCourse() {
@@ -3635,7 +3652,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log('testđ');
       axios.get('api/me/course').then(function (resp) {
         _this.courses = resp.data;
-        console.log(resp);
       })["catch"](function (e) {
         console.log(e);
       });
@@ -3719,10 +3735,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -41887,39 +41899,52 @@ var render = function() {
                 style: { backgroundImage: "url(public/" + value.img_blog + ")" }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "info_blog" }, [
-                _c("div", { staticClass: "blog_rank" }, [
-                  _vm._v("\r\n\t\t\t\t\t\t\thi\r\n\t\t\t\t\t\t")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "blog_name", staticStyle: { flex: "1" } },
-                  [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "blog_cate",
-                        staticStyle: { "{backGround": "value.color_cate}" }
-                      },
-                      [_vm._v(_vm._s(value.name))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "title__blog--link",
-                        attrs: {
-                          tag: "a",
-                          to: { path: "/blog/" + value.id_blog }
-                        }
-                      },
-                      [_vm._v(_vm._s(value.title_blog))]
-                    )
-                  ],
-                  1
-                )
-              ])
+              _c(
+                "div",
+                { staticClass: "info_blog" },
+                [
+                  _vm._l(_vm.rank, function(i) {
+                    return _c("span", [
+                      _c("div", { staticClass: "blog_rank" }, [
+                        _vm._v(
+                          "\r\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(i.index++) +
+                            "\r\n\t\t\t\t\t\t\t\t"
+                        )
+                      ])
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "blog_name", staticStyle: { flex: "1" } },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "blog_cate",
+                          style: { backgroundColor: value.color_cate }
+                        },
+                        [_vm._v(_vm._s(value.name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "title__blog--link",
+                          attrs: {
+                            tag: "a",
+                            to: { path: "/blog/" + value.id_blog }
+                          }
+                        },
+                        [_vm._v(_vm._s(value.title_blog))]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                2
+              )
             ]
           )
         }),
@@ -41953,7 +41978,7 @@ var render = function() {
                       "span",
                       {
                         staticClass: "item_cate",
-                        staticStyle: { "{color": "value.color_cate}" }
+                        style: { backgroundColor: value.color_cate }
                       },
                       [_vm._v(_vm._s(value.name))]
                     ),
@@ -42007,7 +42032,7 @@ var render = function() {
                       "span",
                       {
                         staticClass: "item_cate",
-                        staticStyle: { "{color": "value.color_cate}" }
+                        style: { backgroundColor: value.color_cate }
                       },
                       [_vm._v(_vm._s(value.name))]
                     ),
@@ -42325,7 +42350,7 @@ var staticRenderFns = [
         _c("img", {
           staticClass: "banner_shadow",
           staticStyle: { width: "16em", "margin-left": "7em" },
-          attrs: { src: "" }
+          attrs: { src: "public/images/banner-7.png" }
         })
       ])
     ])
@@ -43294,6 +43319,9 @@ var render = function() {
     _vm._v(" "),
     _vm._m(1),
     _vm._v(" "),
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-3 col-md-4 col-sm-12" }, [
@@ -44123,7 +44151,7 @@ var staticRenderFns = [
                         _c("a", { attrs: { href: "#" } }, [
                           _c("p", { staticClass: "link btn_modal" }, [
                             _vm._v(
-                              "Bắt Đầjjju \n                                            "
+                              "Bắt Đầu \n                                            "
                             ),
                             _c("i", {
                               staticClass: "fa fa-angle-right",
@@ -44254,11 +44282,18 @@ var staticRenderFns = [
                 "container key_section landing-section mobile-container"
             },
             [
-              _c("h2", { staticClass: "title_section" }, [
-                _vm._v("Lập trình"),
-                _c("br"),
-                _vm._v(" là xu thế của tương lai")
-              ]),
+              _c(
+                "h2",
+                {
+                  staticClass: "title_section",
+                  staticStyle: { position: "relative", top: "30px" }
+                },
+                [
+                  _vm._v("Lập trình"),
+                  _c("br"),
+                  _vm._v(" là xu thế của tương lai")
+                ]
+              ),
               _c("br"),
               _c("br"),
               _vm._v(" "),
@@ -44266,8 +44301,8 @@ var staticRenderFns = [
                 _c(
                   "div",
                   {
-                    staticClass: "col-lg-6",
-                    staticStyle: { right: "40px" },
+                    staticClass: "col-lg-6 responsive_img",
+                    staticStyle: { right: "100px" },
                     attrs: { "data-aos": "fade-right" }
                   },
                   [
@@ -44286,6 +44321,7 @@ var staticRenderFns = [
                     _c("div", { staticStyle: { "text-align": "center" } }, [
                       _c("img", {
                         staticClass: "image_key_section",
+                        staticStyle: { "margin-right": "-145px" },
                         attrs: { src: "public/images/home3.png" }
                       })
                     ]),
@@ -44797,7 +44833,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("a", { attrs: { href: "#" } }, [
                           _c("p", { staticClass: "link" }, [
-                            _vm._v("Message Us????  "),
+                            _vm._v("Message Us  "),
                             _c("i", {
                               staticClass: "fa fa-angle-right",
                               attrs: { "aria-hidden": "true" }
@@ -45064,9 +45100,10 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-danger option", attrs: { id: "del_blog" } },
-        [_c("i", { staticClass: "fas fa-ban" }), _vm._v(" Xóa")]
+        [_c("i", { staticClass: "fas fa-ban" }), _vm._v(" Xóa bài viết")]
       ),
       _vm._v(" "),
+      _c("br"),
       _c("br"),
       _vm._v(" "),
       _c("input", {
@@ -45145,6 +45182,7 @@ var staticRenderFns = [
               staticClass: "form-control",
               attrs: { type: "text", name: "title_blog" }
             }),
+            _c("br"),
             _vm._v(" "),
             _c("label", [_vm._v("Ảnh bài viết")]),
             _vm._v(" "),
@@ -45170,6 +45208,7 @@ var staticRenderFns = [
                 rows: "10"
               }
             }),
+            _c("br"),
             _vm._v(" "),
             _c("label", [_vm._v("Chủ đề bài viết")]),
             _vm._v(" "),
@@ -45178,6 +45217,7 @@ var staticRenderFns = [
               { staticClass: "form-control", attrs: { name: "cate_parent" } },
               [_c("option", { attrs: { value: "" } }, [_vm._v("Vui thôi")])]
             ),
+            _c("br"),
             _vm._v(" "),
             _c("input", {
               staticClass: "btn btn-primary",
@@ -45223,7 +45263,7 @@ var render = function() {
       [
         _c("h3", { staticClass: "col-lg-12" }, [_vm._v("Khóa học của tôi")]),
         _vm._v(" "),
-        _vm._l(_vm.courses, function(v, i) {
+        _vm._l(_vm.convertCourse, function(v, i) {
           return _c(
             "article",
             { staticClass: "course-item col-xs-6 col-md-4 col-lg-3 mb-4" },
@@ -45775,33 +45815,6 @@ var staticRenderFns = [
             }
           },
           [_c("i", { staticClass: "fas fa-plus" }), _vm._v(" Plus")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "bg-pinterest",
-            attrs: { href: "", target: "_blank" }
-          },
-          [_c("i", { staticClass: "fab fa-pinterest-p" }), _vm._v(" Pin")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          { staticClass: "bg-email", attrs: { href: "", target: "_blank" } },
-          [_c("i", { staticClass: "fas fa-envelope" }), _vm._v(" Gmail")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "bg-messenger",
-            attrs: { href: "", target: "_blank" }
-          },
-          [
-            _c("i", { staticClass: "fab fa-facebook-messenger" }),
-            _vm._v(" Messenger")
-          ]
         )
       ])
     ])
@@ -45896,11 +45909,7 @@ var staticRenderFns = [
                   _c("div", {
                     staticClass: "comment-message",
                     attrs: { id: "top-comment-message" }
-                  }),
-                  _vm._v(" "),
-                  _c("h3", { attrs: { left_cmt: "" } }, [
-                    _vm._v("Đăng nhập để bình luận")
-                  ])
+                  })
                 ])
               ])
             ]
@@ -62413,15 +62422,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************!*\
   !*** ./resources/js/components/CateCourse.vue ***!
   \************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CateCourse_vue_vue_type_template_id_ebe27016_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CateCourse.vue?vue&type=template&id=ebe27016&scoped=true& */ "./resources/js/components/CateCourse.vue?vue&type=template&id=ebe27016&scoped=true&");
 /* harmony import */ var _CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CateCourse.vue?vue&type=script&lang=js& */ "./resources/js/components/CateCourse.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CateCourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -62451,7 +62459,7 @@ component.options.__file = "resources/js/components/CateCourse.vue"
 /*!*************************************************************************!*\
   !*** ./resources/js/components/CateCourse.vue?vue&type=script&lang=js& ***!
   \*************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63517,8 +63525,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Xampp\htdocs\codehero\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Xampp\htdocs\codehero\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Xampp\htdocs\codehero\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Xampp\htdocs\codehero\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
