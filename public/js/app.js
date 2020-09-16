@@ -2881,6 +2881,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ForumComponent',
@@ -2894,7 +2896,7 @@ __webpack_require__.r(__webpack_exports__);
       turn: 4,
       width: 1,
       user: 1,
-      datas: {},
+      // datas:{},
       cate_data: [],
       new_data: [],
       load: true
@@ -2920,9 +2922,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     covertTitle: function covertTitle() {
-      return this.datas.map(function (el, index) {
-        if (el.title_post.length > 80) {
-          el.title_post = el.title_post.slice(0, 80) + '...';
+      return this.new_data.map(function (el, index) {
+        if (el.title_post.length > 30) {
+          el.title_post = el.title_post.slice(0, 30) + '...';
           return el;
         } else {
           return el;
@@ -4230,7 +4232,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CommentComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CommentComponent */ "./resources/js/components/CommentComponent.vue");
-//
 //
 //
 //
@@ -42391,9 +42392,11 @@ var render = function() {
             "div",
             { staticClass: "row" },
             [
-              _c("h3", { staticClass: "col-12" }, [
-                _vm._v(_vm._s(_vm.cate.name))
-              ]),
+              _c(
+                "h2",
+                { staticClass: "col-12", staticStyle: { "font-size": "28px" } },
+                [_vm._v(_vm._s(_vm.cate.name))]
+              ),
               _vm._v(" "),
               _vm._l(_vm.convertCourse, function(value) {
                 return _c(
@@ -43519,7 +43522,7 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._l(_vm.new_data, function(value) {
+          _vm._l(_vm.covertTitle, function(value) {
             return _c("div", { staticClass: "p-0" }, [
               _c(
                 "div",
@@ -43605,7 +43608,13 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v(_vm._s(value.title_post))]
+                        [
+                          _vm._v(
+                            "\r\n\t\t\t\t\t\t\t" +
+                              _vm._s(value.title_post) +
+                              "\r\n\t\t\t\t\t\t\t"
+                          )
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
@@ -46744,8 +46753,6 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", [_vm._v("hi")]),
-                _vm._v(" "),
                 _c(
                   "span",
                   { staticClass: "getTime hide-on-table hidden-on-pc " },
@@ -46884,7 +46891,7 @@ var render = function() {
             attrs: {
               cmt: value,
               reply: value.reply,
-              user: _vm.user,
+              user: _vm.datas.displayname,
               idPost: _vm.datas.id_post
             },
             on: {
@@ -46908,7 +46915,7 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("h3", { staticClass: "name_auth" }, [
-                    _vm._v(_vm._s(_vm.user.user))
+                    _vm._v(_vm._s(_vm.datas.displayname))
                   ])
                 ]),
                 _vm._v(" "),

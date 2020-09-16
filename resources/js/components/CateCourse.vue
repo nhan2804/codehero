@@ -6,7 +6,7 @@
 		<div id="list">
 			<section class="list-courses">
 				<div class="row">
-					<h3 class="col-12">{{cate.name}}</h3>
+					<h2 class="col-12" style="font-size: 28px">{{cate.name}}</h2>
 					<article v-for="value in convertCourse" class="course-item col-xs-6 col-md-4 col-lg-3">
 						<div class="border_course">
 							<div class="wrap-course-item">

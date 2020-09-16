@@ -41,7 +41,7 @@
 				<div style="border-radius: unset;outline: none;background: #574BFC" class="heading-new btn btn-primary">Top thảo luận</div>
 			</div>
 			<br>
-				<div v-for="value in new_data" class="p-0">
+				<div v-for="value in covertTitle" class="p-0">
 					<div class="item_forum" style="display: flex;padding: 10px 0;margin:10px 0;border-top-left-radius: 20px;border-bottom-right-radius: 20px">
 						<div :style="{backgroundImage:'url(./'+value.avatar+')'}" style="background-position: center;background-size: cover;width: 80px;height: 80px;border-radius: 50%;margin-left: 4px"></div>
 						<div style="height: 80px;flex: 1;margin-left: 8px;position: relative;">
@@ -49,7 +49,9 @@
 								<span :style="{backgroundColor:value.color_cate}" style="display: block;padding: 0 4px;border-radius: 10px;color: white">{{value.name_cate}}</span>
 								<span style="margin-left: 8px">{{value.created_at}}</span>
 							</div>
-							<router-link tag="a" class="link_forum" style="display: block;font-size: 1.1rem;" :to="{ path: '/forum/' + value.id_post+'/'+value.slug_forum+'.xml'}">{{value.title_post}}</router-link>
+							<router-link tag="a" class="link_forum" style="display: block;font-size: 1.1rem;" :to="{ path: '/forum/' + value.id_post+'/'+value.slug_forum+'.xml'}">
+							{{value.title_post}}
+							</router-link>
 							<div style="align-items: flex-end;position: absolute;bottom: 0">
 								<span style="font-size: 0.8rem"><i  class="fas fa-heart icon_heart"></i>{{value.react}}</span>
 								<span><i style="font-size: 0.8rem" class="far fa-comment-dots"> {{value.cmt}}</i></span>
@@ -95,7 +97,7 @@ export default {
     	turn:4,
     	width:1,
     	user:1,
-    	datas:{},
+    	// datas:{},
     	cate_data:[],
     	new_data:[],
     	load:true
@@ -125,9 +127,9 @@ export default {
   },
   computed:{
   	covertTitle(){
-  		return this.datas.map((el,index)=> {
-  			if(el.title_post.length>80){
-  				el.title_post=el.title_post.slice(0,80)+'...';
+  		return this.new_data.map((el,index)=> {
+  			if(el.title_post.length>30){
+  				el.title_post=el.title_post.slice(0,30)+'...';
   				return el;
   			}else{
   				return el;

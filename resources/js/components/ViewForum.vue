@@ -46,7 +46,6 @@
 					<div class="user_name"></div>
 					</a>
 					</form>
-					<div>hi</div>
 					<span class="getTime hide-on-table hidden-on-pc "><i class="far fa-clock"></i> {{datas.created_at}}</span>
 				</div>
 			</div>
@@ -87,7 +86,7 @@
 				v-bind:reply="value.reply"
 				v-on:deleteCmt="deleteCmt"
 				v-on:editCmt="editCmt"
-				v-bind:user="user"
+				v-bind:user="datas.displayname"
 				v-bind:idPost="datas.id_post"
 				v-on:replyCmt="replyCmt"
 				>	
@@ -97,7 +96,7 @@
 			<div class="comment">
 				<div class="info_cmt">
 					<img class="img_cmt" style="width:70px;height:70px" :src="'./'+user.avatar" alt="">
-					<h3 class="name_auth">{{user.user}}</h3>
+					<h3 class="name_auth">{{datas.displayname}}</h3>
 				</div>
 				<input v-model="cmt.content" class="input_cmt" placeholder="Nhập để bình luận" name="cmt" id="cmt_input"/>
 			</div>
