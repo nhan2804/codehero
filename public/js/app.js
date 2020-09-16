@@ -3710,7 +3710,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ReplyComponent',
   props: {
@@ -45380,12 +45379,10 @@ var render = function() {
                   attrs: { status: "false", username: _vm.reply.id, href: "" }
                 },
                 [
-                  _vm._v(_vm._s(_vm.reply.user) + "\n\t\t\t\t"),
+                  _vm._v(_vm._s(_vm.reply.displayname) + "\n\t\t\t\t"),
                   _c("div", { staticClass: "user_name" })
                 ]
-              ),
-              _vm._v(" "),
-              _c("div", [_vm._v("hi")])
+              )
             ])
           ])
         ]),

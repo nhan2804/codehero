@@ -6,10 +6,9 @@
 			<div class="div_info_post info_post_mobile">
 				<div class="forum_info_auth info_user_reply" :style="{backgroundImage:'url(./'+reply.avatar+')'}" style="border-radius:50%;background-position: center;background-size: cover;border:1px solid #ccc" ></div>
 				<div class="div_level_user">
-					<a class="link_user" style="font-weight: 500;margin-right: 4px" status="false" :username="reply.id" href="">{{reply.user}}
+					<a class="link_user" style="font-weight: 500;margin-right: 4px" status="false" :username="reply.id" href="">{{reply.displayname}}
 					<div class="user_name"></div>
 					</a>
-					<div>hi</div>
 				</div>
 			</div>
 		</div>
