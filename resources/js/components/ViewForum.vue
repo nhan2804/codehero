@@ -86,7 +86,7 @@
 				v-bind:reply="value.reply"
 				v-on:deleteCmt="deleteCmt"
 				v-on:editCmt="editCmt"
-				v-bind:user="datas.displayname"
+				v-bind:user="user"
 				v-bind:idPost="datas.id_post"
 				v-on:replyCmt="replyCmt"
 				>	

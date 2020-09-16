@@ -2866,23 +2866,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ForumComponent',
@@ -2896,18 +2879,18 @@ __webpack_require__.r(__webpack_exports__);
       turn: 4,
       width: 1,
       user: 1,
-      // datas:{},
+      datas: {},
       cate_data: [],
       new_data: [],
       load: true
     };
   },
-  mounted: function mounted() {
+  mounted: function mounted() {},
+  created: function created() {
     this.page = this.$route.query.page;
     this.loadForum();
     this.process();
   },
-  created: function created() {},
   updated: function updated() {
     document.title = "Diễn đàn thảo luận";
     this.page = this.$route.query.page;
@@ -2926,9 +2909,9 @@ __webpack_require__.r(__webpack_exports__);
         if (el.title_post.length > 30) {
           el.title_post = el.title_post.slice(0, 30) + '...';
           return el;
-        } else {
-          return el;
         }
+
+        return el;
       });
     }
   },
@@ -2941,6 +2924,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.cate_data = rep.data.cate_forum;
         _this.new_data = rep.data.data_new;
         _this.user = rep.data.user;
+        console.log();
       })["catch"](function (e) {
         console.log(e);
       });
@@ -43521,171 +43505,8 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._l(_vm.covertTitle, function(value) {
-            return _c("div", { staticClass: "p-0" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "item_forum",
-                  staticStyle: {
-                    display: "flex",
-                    padding: "10px 0",
-                    margin: "10px 0",
-                    "border-top-left-radius": "20px",
-                    "border-bottom-right-radius": "20px"
-                  }
-                },
-                [
-                  _c("div", {
-                    staticStyle: {
-                      "background-position": "center",
-                      "background-size": "cover",
-                      width: "80px",
-                      height: "80px",
-                      "border-radius": "50%",
-                      "margin-left": "4px"
-                    },
-                    style: { backgroundImage: "url(./" + value.avatar + ")" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticStyle: {
-                        height: "80px",
-                        flex: "1",
-                        "margin-left": "8px",
-                        position: "relative"
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticStyle: { display: "flex", "font-size": ".8rem" }
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticStyle: {
-                                display: "block",
-                                padding: "0 4px",
-                                "border-radius": "10px",
-                                color: "white"
-                              },
-                              style: { backgroundColor: value.color_cate }
-                            },
-                            [_vm._v(_vm._s(value.name_cate))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            { staticStyle: { "margin-left": "8px" } },
-                            [_vm._v(_vm._s(value.created_at))]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "link_forum",
-                          staticStyle: {
-                            display: "block",
-                            "font-size": "1.1rem"
-                          },
-                          attrs: {
-                            tag: "a",
-                            to: {
-                              path:
-                                "/forum/" +
-                                value.id_post +
-                                "/" +
-                                value.slug_forum +
-                                ".xml"
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\r\n\t\t\t\t\t\t\t" +
-                              _vm._s(value.title_post) +
-                              "\r\n\t\t\t\t\t\t\t"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticStyle: {
-                            "align-items": "flex-end",
-                            position: "absolute",
-                            bottom: "0"
-                          }
-                        },
-                        [
-                          _c(
-                            "span",
-                            { staticStyle: { "font-size": "0.8rem" } },
-                            [
-                              _c("i", {
-                                staticClass: "fas fa-heart icon_heart"
-                              }),
-                              _vm._v(_vm._s(value.react))
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("span", [
-                            _c(
-                              "i",
-                              {
-                                staticClass: "far fa-comment-dots",
-                                staticStyle: { "font-size": "0.8rem" }
-                              },
-                              [_vm._v(" " + _vm._s(value.cmt))]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("span", [
-                            _c(
-                              "i",
-                              {
-                                staticClass: "far fa-eye",
-                                staticStyle: { "font-size": "0.8rem" }
-                              },
-                              [_vm._v(" " + _vm._s(value.views))]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("i", {
-                            staticClass: "fas fa-user",
-                            staticStyle: { "font-size": "0.8rem" }
-                          }),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "link_user",
-                              attrs: {
-                                username: "",
-                                status: "false",
-                                href: "#"
-                              }
-                            },
-                            [
-                              _vm._v(_vm._s(value.user)),
-                              _c("div", { staticClass: "user_name" })
-                            ]
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ]
-              )
-            ])
+          _vm._l(_vm.covertTitle, function(v, i) {
+            return _c("ItemForum", { key: i, attrs: { value: v } })
           }),
           _vm._v(" "),
           _c("br"),
@@ -46888,7 +46709,7 @@ var render = function() {
             attrs: {
               cmt: value,
               reply: value.reply,
-              user: _vm.datas.displayname,
+              user: _vm.user,
               idPost: _vm.datas.id_post
             },
             on: {
@@ -63529,8 +63350,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Xampp\htdocs\codehero\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Xampp\htdocs\codehero\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Xampp\htdocs\codehero\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Xampp\htdocs\codehero\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

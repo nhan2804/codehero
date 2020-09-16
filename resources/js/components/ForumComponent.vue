@@ -26,9 +26,7 @@
 				<ItemForum
 				v-for="(v,i) in datas.data"
 				:key="i"
-				:value="v"
-										>
-					
+				:value="v">
 				</ItemForum>
 			</div>
 			<div>
@@ -41,26 +39,11 @@
 				<div style="border-radius: unset;outline: none;background: #574BFC" class="heading-new btn btn-primary">Top thảo luận</div>
 			</div>
 			<br>
-				<div v-for="value in covertTitle" class="p-0">
-					<div class="item_forum" style="display: flex;padding: 10px 0;margin:10px 0;border-top-left-radius: 20px;border-bottom-right-radius: 20px">
-						<div :style="{backgroundImage:'url(./'+value.avatar+')'}" style="background-position: center;background-size: cover;width: 80px;height: 80px;border-radius: 50%;margin-left: 4px"></div>
-						<div style="height: 80px;flex: 1;margin-left: 8px;position: relative;">
-							<div style="display: flex;font-size: .8rem;">
-								<span :style="{backgroundColor:value.color_cate}" style="display: block;padding: 0 4px;border-radius: 10px;color: white">{{value.name_cate}}</span>
-								<span style="margin-left: 8px">{{value.created_at}}</span>
-							</div>
-							<router-link tag="a" class="link_forum" style="display: block;font-size: 1.1rem;" :to="{ path: '/forum/' + value.id_post+'/'+value.slug_forum+'.xml'}">
-							{{value.title_post}}
-							</router-link>
-							<div style="align-items: flex-end;position: absolute;bottom: 0">
-								<span style="font-size: 0.8rem"><i  class="fas fa-heart icon_heart"></i>{{value.react}}</span>
-								<span><i style="font-size: 0.8rem" class="far fa-comment-dots"> {{value.cmt}}</i></span>
-								<span><i style="font-size: 0.8rem" class="far fa-eye"> {{value.views}}</i></span>
-								<i style="font-size: 0.8rem" class="fas fa-user"></i><a class="link_user" username="" status="false" href="#">{{value.user}}<div class="user_name"></div></a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<ItemForum
+				v-for="(v,i) in covertTitle"
+				:key="i"
+				:value="v">
+				</ItemForum>
 			<br>
 			<div class="under_line">
 				<div style="border-radius: unset;outline: none;" class="heading-new btn btn-danger">Chủ đề</div>
@@ -97,7 +80,7 @@ export default {
     	turn:4,
     	width:1,
     	user:1,
-    	// datas:{},
+    	datas:{},
     	cate_data:[],
     	new_data:[],
     	load:true
@@ -105,12 +88,12 @@ export default {
   },
   mounted(){
   	
-  		this.page= this.$route.query.page;
-    	this.loadForum(); 
-    	this.process();
+  		
   },
   created(){
-
+  	this.page= this.$route.query.page;
+    	this.loadForum(); 
+    	this.process();
   },
   updated(){
   		document.title = "Diễn đàn thảo luận";
@@ -131,9 +114,8 @@ export default {
   			if(el.title_post.length>30){
   				el.title_post=el.title_post.slice(0,30)+'...';
   				return el;
-  			}else{
-  				return el;
   			}
+  				return el;
   		})
   	}
 
@@ -146,6 +128,7 @@ export default {
     			this.cate_data=rep.data.cate_forum;
     			this.new_data=rep.data.data_new;
     			this.user=rep.data.user;
+    			console.log();
     		})
     		.catch((e)=>{
     			console.log(e);
