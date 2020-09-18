@@ -96,7 +96,7 @@
 			<div class="comment">
 				<div class="info_cmt">
 					<img class="img_cmt" style="width:70px;height:70px" :src="'./'+user.avatar" alt="">
-					<h3 class="name_auth">{{datas.displayname}}</h3>
+					<h3 class="name_auth">{{user.displayname}}</h3>
 				</div>
 				<input v-model="cmt.content" class="input_cmt" placeholder="Nhập để bình luận" name="cmt" id="cmt_input"/>
 			</div>

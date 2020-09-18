@@ -46357,9 +46357,9 @@ var staticRenderFns = [
       _c("form", { attrs: { onsubmit: "return false" } }, [
         _c("div", { staticClass: "comment" }, [
           _c("div", { staticClass: "info_cmt" }, [
-            _c("img", { staticClass: "img_cmt", attrs: { src: "", alt: "" } }),
+            _c("img", { staticClass: "img_cmt", attrs: { alt: "" } }),
             _vm._v(" "),
-            _c("h3", { staticClass: "name_auth" }, [_vm._v("Nhẫn")])
+            _c("h3", { staticClass: "name_auth" })
           ]),
           _vm._v(" "),
           _c("input", {
@@ -46733,7 +46733,7 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("h3", { staticClass: "name_auth" }, [
-                    _vm._v(_vm._s(_vm.datas.displayname))
+                    _vm._v(_vm._s(_vm.user.displayname))
                   ])
                 ]),
                 _vm._v(" "),

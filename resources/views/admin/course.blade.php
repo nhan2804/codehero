@@ -2,6 +2,7 @@
 @section('admin_content')
 <div class="container-fluid">
 <div class="table-responsive">
+<br><br>
 	<a href="course/add-course" class="btn btn-success"><i class="fas fa-plus"></i> Thêm khóa học</a>
 	<br>
 	<br>

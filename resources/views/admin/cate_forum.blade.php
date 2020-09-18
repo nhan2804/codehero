@@ -6,6 +6,7 @@
 			<form method="POST" action="{{URL::to("/admin/forum/insert-cate-forum")}}">
 				{{csrf_field()}}
 				<div class="form-group">
+				<br><br>
 					<label>Tên Chủ Đề</label>
 					<input class="form-control" type="text" name="name_cate">
 					<br>

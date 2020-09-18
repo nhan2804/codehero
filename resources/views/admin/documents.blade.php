@@ -22,6 +22,7 @@
 	</div>
 	<div class="col-md-12">
 		<div class="table-responsive">
+		<br><br>
 			<table class="table table-striped">
 				<tr>
 					<td>STT</td>
@@ -51,7 +52,7 @@
   <!-- ... -->
   <div class="form-group">
 	<label>Tên tài liệu</label>
-	<input class="form-control" type="text" name="name_doc">
+	<input class="form-control" type="text" name="name_doc"><br>
 	<label>Nội dung bài viết</label>
 
 	<textarea class="form-control" name="content_doc" cols="80" rows="10"></textarea>
@@ -67,4 +68,5 @@
     <input name="file" type="file" multiple />
   </div>
 </form>
+<br><br>
 @endsection

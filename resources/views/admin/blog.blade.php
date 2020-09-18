@@ -3,6 +3,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
+		<br><br>
 			<label>Danh sách bài viết</label>  
 			
 			<div class="table-responsive">
