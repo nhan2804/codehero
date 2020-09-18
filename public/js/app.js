@@ -2906,8 +2906,8 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     covertTitle: function covertTitle() {
       return this.new_data.map(function (el, index) {
-        if (el.title_post.length > 30) {
-          el.title_post = el.title_post.slice(0, 30) + '...';
+        if (el.title_post.length > 22) {
+          el.title_post = el.title_post.slice(0, 22) + '...';
           return el;
         }
 
@@ -63350,8 +63350,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Xampp\htdocs\codehero\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Xampp\htdocs\codehero\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Xampp\htdocs\codehero\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Xampp\htdocs\codehero\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

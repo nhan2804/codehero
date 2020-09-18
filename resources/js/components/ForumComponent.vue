@@ -111,8 +111,8 @@ export default {
   computed:{
   	covertTitle(){
   		return this.new_data.map((el,index)=> {
-  			if(el.title_post.length>30){
-  				el.title_post=el.title_post.slice(0,30)+'...';
+  			if(el.title_post.length>22){
+  				el.title_post=el.title_post.slice(0,22)+'...';
   				return el;
   			}
   				return el;
