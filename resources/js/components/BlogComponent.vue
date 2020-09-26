@@ -123,7 +123,7 @@
 			</div>
 			<div class="col-md-4 col">
 				<div class="hide-on-table-and-moblie">
-					<img src="public/images/banner-7.png" style="width: 16em; margin-left: 7em" class="banner_shadow"/>
+					<img src="public/images/banner7.png" style="width: 16em; margin-left: 7em" class="banner_shadow"/>
 				</div>
 			</div>
 	</div>

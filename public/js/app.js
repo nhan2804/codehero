@@ -42334,7 +42334,7 @@ var staticRenderFns = [
         _c("img", {
           staticClass: "banner_shadow",
           staticStyle: { width: "16em", "margin-left": "7em" },
-          attrs: { src: "public/images/banner-7.png" }
+          attrs: { src: "public/images/banner7.png" }
         })
       ])
     ])
@@ -42902,7 +42902,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "head-course hide-on-mobile" }, [
       _c("img", {
         staticStyle: { width: "100%" },
-        attrs: { src: "http://localhost/codehero/public/images/banner1.png" }
+        attrs: { src: "public/images/banner1.png" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "block-top-head", attrs: { id: "search" } }, [
@@ -45659,7 +45659,7 @@ var staticRenderFns = [
                 _c("img", {
                   staticClass: "up",
                   attrs: {
-                    src: "http://localhost/codehero/public/images/like.svg",
+                    src: "public/images/like.svg",
                     alt: "err",
                     id: "img_1847944"
                   }
