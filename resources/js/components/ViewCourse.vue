@@ -143,8 +143,8 @@
     										<form onsubmit="return false">
     											<div class="comment">
     												<div class="info_cmt">
-    													<img class="img_cmt"  alt="">
-    													<h3 class="name_auth"></h3>
+    													<img class="img_cmt":src="'./'+user.avatar"  alt="">
+    													<h3 class="name_auth">{{user.displayname}}</h3>
     												</div>
     								
     												<input class="input_cmt" placeholder="Nhập để đánh giá" name="cmt" id="rate_input">

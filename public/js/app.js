@@ -46151,7 +46151,40 @@ var render = function() {
                           _vm._v(" "),
                           _vm._m(6),
                           _vm._v(" "),
-                          _vm._m(7)
+                          _c("div", { staticClass: "cmt_rate hidden" }, [
+                            _c(
+                              "form",
+                              { attrs: { onsubmit: "return false" } },
+                              [
+                                _c("div", { staticClass: "comment" }, [
+                                  _c("div", { staticClass: "info_cmt" }, [
+                                    _c("img", {
+                                      staticClass: "img_cmt",
+                                      attrs: {
+                                        src: "./" + _vm.user.avatar,
+                                        alt: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("h3", { staticClass: "name_auth" }, [
+                                      _vm._v(_vm._s(_vm.user.displayname))
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "input_cmt",
+                                    attrs: {
+                                      placeholder: "Nhập để đánh giá",
+                                      name: "cmt",
+                                      id: "rate_input"
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(7)
+                              ]
+                            )
+                          ])
                         ])
                       : _vm._e()
                   ])
@@ -46353,37 +46386,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cmt_rate hidden" }, [
-      _c("form", { attrs: { onsubmit: "return false" } }, [
-        _c("div", { staticClass: "comment" }, [
-          _c("div", { staticClass: "info_cmt" }, [
-            _c("img", { staticClass: "img_cmt", attrs: { alt: "" } }),
-            _vm._v(" "),
-            _c("h3", { staticClass: "name_auth" })
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "input_cmt",
-            attrs: {
-              placeholder: "Nhập để đánh giá",
-              name: "cmt",
-              id: "rate_input"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "btn_cmt" }, [
-          _c("input", {
-            staticClass: "btn btn-primary",
-            attrs: {
-              "data-id": "",
-              id: "btn_rate",
-              type: "submit",
-              value: "Đánh giá"
-            }
-          })
-        ])
-      ])
+    return _c("div", { staticClass: "btn_cmt" }, [
+      _c("input", {
+        staticClass: "btn btn-primary",
+        attrs: {
+          "data-id": "",
+          id: "btn_rate",
+          type: "submit",
+          value: "Đánh giá"
+        }
+      })
     ])
   }
 ]

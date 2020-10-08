@@ -27,7 +27,7 @@ class ForumController extends Controller
             ->leftJoin('react', 'forum.id_post', '=', 'react.id_post')
             ->leftJoin('cmt', 'forum.id_post', '=', 'cmt.id_forum')
             ->groupBy('forum.id_post')
-            ->orderBy('forum.comments','DESC')->whereDate('forum.created_at', Carbon::today())->skip(0)->take(5)->get();;
+            ->orderBy('forum.comments','DESC')->skip(0)->take(5)->get();;
 		      $cate_forum= DB::table('forum_cate')->join('forum','forum_cate.id_cate','=','forum.id_cate_forum')
 		                  ->select('id_post','name_cate','id_cate','title_post',DB::raw('COUNT(forum.id_cate_forum) as sum_post,max(forum.id_post) as MAXimum'))->distinct()
 		                  ->whereRaw('id_post','max(forum.id_post)')
