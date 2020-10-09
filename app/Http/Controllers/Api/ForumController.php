@@ -20,7 +20,7 @@ class ForumController extends Controller
             ->leftJoin('react', 'forum.id_post', '=', 'react.id_post')
             ->leftJoin('cmt', 'forum.id_post', '=', 'cmt.id_forum')
             ->groupBy('forum.id_post')
-            ->orderBy('forum.created_at','DESC')->paginate(5);
+            ->orderBy('forum.created_at','DESC')->paginate(6);
 
 
             $data_new = DB::table('forum')->selectRaw('COUNT(react.id_post) as react,COUNT(cmt.id_forum) as cmt,user, name_cate,img_cate,title_post,forum.created_at,avatar,color_cate,forum.id_post,slug_forum,like_post,comments,views,accounts.id')->Join('forum_cate','forum.id_cate_forum','=','forum_cate.id_cate')->Join('accounts','forum.auth_post','=','accounts.id')

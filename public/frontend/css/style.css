@@ -557,7 +557,7 @@ a.link_popular_new{
 }
 .link_lesson{
 	border-bottom: 1px solid #ccc;
-	color: #565151;
+	color: #0056b3 !important;
 	padding: 4px 0;
 	font-size: 1.2rem;
 	text-decoration: none;
@@ -1026,6 +1026,10 @@ position: relative;
 }
 .seft_react{
 	color:black;
+}
+.active-course{
+	background-color: #B4B2B2;
+	
 }
 .line_cmt{
 	position: absolute;

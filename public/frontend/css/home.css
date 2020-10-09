@@ -435,6 +435,7 @@ p {
 .btn, button {
     border-radius: 5px;
 }
+
 .btn {
     display: inline-block;
     padding: 6px 12px;

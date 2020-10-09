@@ -56,7 +56,6 @@ $('body').on('keyup','#input_search', function(event) {
 		})
 	}
 });
-
 $('#cmt_blog').on('click', function(event) {
 	event.preventDefault();
 	alert("gi z");
@@ -89,8 +88,8 @@ $('body').on('click','.list_lesson li a',function() {
 	$('#title_course').text(a);
 	var b = $(this).attr('data-href');
 	$('#ytb').attr('src',b);
-	$('.list_lesson li').removeClass('active');
-	$(this).parent().addClass('active');
+	$('.list_lesson li').removeClass('active-course');
+	$(this).parent().addClass('active-course');
 	return false;
 });
 $('.div_comment').each(function(i, el) {
